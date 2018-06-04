@@ -18,13 +18,12 @@ import com.nice.eem.dto.ProgramWiseDataDto;
 import com.nice.eem.dto.SiteWiseDataDto;
 import com.nice.eem.entity.EemIndividualCustomer;
 import com.nice.eem.entity.LdapConfiguration;
-import com.nice.eem.entity.User;
+import com.nice.eem.entity.UserLogin;
 import com.nice.eem.service.IndividualCustService;
 import com.nice.eem.service.LdapconfigureService;
+import com.nice.eem.service.LoginService;
 import com.nice.eem.service.ProgramWiseDataService;
 import com.nice.eem.service.SiteWiseDataService;
-import com.nice.eem.service.UserService;
-import com.nice.eem.util.MailUtil;
 
 /**
  * 
@@ -44,7 +43,7 @@ public class CustomerDataRestController {
 	SiteWiseDataService siteWiseDataService;
 
 	@Autowired
-	UserService userService;
+	LoginService loginService;
 
 	@Autowired
 	IndividualCustService custService;
@@ -108,23 +107,6 @@ public class CustomerDataRestController {
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 
-	/*
-	 * @RequestMapping(value = "/gettotalagents", method = RequestMethod.GET) public
-	 * int getTotalAgentsByDate() {
-	 * 
-	 * return programWiseDataService.getTotalAgentsByDate();
-	 * 
-	 * }
-	 * 
-	 * @RequestMapping(value="/getParticipatingAgents") public int
-	 * getparticipatingAgentsByDate() { return
-	 * programWiseDataService.getParticipatingAgentsByDate(); }
-	 * 
-	 * @RequestMapping(value="/getLoggedInAgents") public int
-	 * getLoggedInAgentsByDate() { return
-	 * programWiseDataService.getLoggedInAgentsByDate(); }
-	 */
-
 	/**
 	 * Created By Pooja to save Customer
 	 * 
@@ -146,16 +128,17 @@ public class CustomerDataRestController {
 		return custService.getCustomers();
 	}
 
-	/**
-	 * Created By Pooja
-	 * 
-	 * @param user
-	 * @return
-	 */
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public User login(@RequestBody User user) {
-		return userService.login(user);
-	}
+
+        /**
+         * Created By Abhishek to ldap Login authentication
+         * @param userLogin
+         * @return 
+         */
+        
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(@RequestBody UserLogin userLogin) {
+        return loginService.login(userLogin);
+    }
 
 	/**
 	 * Created By pooja to update the customer
@@ -168,10 +151,10 @@ public class CustomerDataRestController {
 		return custService.getCustomerEmail(custid);
 	}
 
-	@RequestMapping(value = "/custname", method = RequestMethod.GET)
-	public List getCustomerName() {
-		return custService.getCustomerName();
-	}
+//	@RequestMapping(value = "/custname", method = RequestMethod.GET)
+//	public List getCustomerName() {
+//		return custService.getCustomerName();
+//	}
 
 	@RequestMapping(value = "/getmaillist/{custId}", method = RequestMethod.GET)
 	public List sendMailsToList(@PathVariable Long custId) {

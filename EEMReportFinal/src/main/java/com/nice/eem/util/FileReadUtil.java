@@ -15,7 +15,11 @@ import com.nice.eem.constants.EemConstants;
  */
 @Component
 public class FileReadUtil {
-
+/**
+ * @author AJIT
+ * @return
+ * @throws IOException
+ */
 	public String getFile() throws IOException {
 		System.out.println("GET FILE");
 		// Get file from resources folder
@@ -27,9 +31,5 @@ public class FileReadUtil {
 		return file.toString();
 	}
 
-	public String createNewFile() {
-		ClassLoader classLoader = getClass().getClassLoader();
-		classLoader.getResource("");
-		return null;
-	}
+	
 }

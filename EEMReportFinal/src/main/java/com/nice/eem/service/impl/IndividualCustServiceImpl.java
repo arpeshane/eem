@@ -108,5 +108,14 @@ public class IndividualCustServiceImpl implements IndividualCustService {
 		
 		return eemIndividualCustomer;
 	}
-
+	 @Override
+	    public String getCustomerStartDay(String custName){
+	         return indCustDao.getCustomerWiseWeekStartDay(custName);
+	    }
+	       
+	    @Override
+	    public List<EemIndividualCustomer> getActiveCustomers() {
+	      return indCustDao.getActiveCustomerList();
+	    }
+	
 }

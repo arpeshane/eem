@@ -3,7 +3,6 @@
  */
 package com.nice.eem.dto;
 
-import java.math.BigDecimal;
 
 /**
  * @author ajit.p
@@ -13,10 +12,10 @@ public class SummaryReportDto{
 
 	private static final Long serialVersionUID = 1L;
 	/* Summary */
-	private BigDecimal totalAgent;
-	private BigDecimal totalAgentParticipating;
-	private BigDecimal currentDayActiveAgent;
-	private BigDecimal ssActiveAgents;
+	private Long totalAgent;
+	private Long totalAgentParticipating;
+	private Long currentDayActiveAgent;
+	private Long ssActiveAgents;
 	private Double scheduleChangeToLoggedInAgents;
 	private Double scheduleModifyReqPerAgent;
 	private Double scheduleModifyHoursPerAgents;
@@ -25,32 +24,32 @@ public class SummaryReportDto{
 	private Double scheduleHr;
 	/*Self Service*/
 	// Extra Hours
-	private BigDecimal extraHrRequest;
+	private Long extraHrRequest;
 	private Double extraHrTotal;
-	private BigDecimal extraHrReqAutoApproved;
+	private Long extraHrReqAutoApproved;
 	private Double extraHrHourAutoApproved;
-	private BigDecimal extraHrReqApproved;
+	private Long extraHrReqApproved;
 	private Double extraHrHoursApproved;
-	private BigDecimal extraHrReqDeclined;
+	private Long extraHrReqDeclined;
 	private Double extraHrHoursDeclined;
-	private BigDecimal extraHrReqRtcWaiting;
+	private Long extraHrReqRtcWaiting;
 	private Double extraHrHoursRtcWaiting;
 	// Time Off	
-	private BigDecimal vtoHrRequest;
+	private Long vtoHrRequest;
 	private Double vtoHrTotal;
-	private BigDecimal vtoReqAutoApproved;
+	private Long vtoReqAutoApproved;
 	private Double vtoHourAutoApproved;
-	private BigDecimal vtoReqApproved;
+	private Long vtoReqApproved;
 	private Double vtoHoursApproved;
-	private BigDecimal vtoReqDeclined;
+	private Long vtoReqDeclined;
 	private Double vtoHoursDeclined;
-	private BigDecimal vtoReqRtcWaiting;
+	private Long vtoReqRtcWaiting;
 	private Double vtoHoursRtcWaiting;
 	//Swap and Trade
-	private BigDecimal ttlSwap;
+	private Long ttlSwap;
 	private Double ttlSwapHr;
-	private BigDecimal tradeReq;
-	private BigDecimal ttlTradeAccepted;
+	private Long tradeReq;
+	private Long ttlTradeAccepted;
 	private Double ttlTradeHr;
 	
 	/*Rule Recommendation*/
@@ -70,12 +69,12 @@ public class SummaryReportDto{
 		super();
 	}
 	
-	public SummaryReportDto(BigDecimal totalAgent, BigDecimal totalAgentParticipating, BigDecimal currentDayActiveAgent, BigDecimal ssActiveAgents,
-			Double scheduleHr, BigDecimal extraHrReqAutoApproved, Double extraHrHourAutoApproved, BigDecimal extraHrReqApproved,
-			Double extraHrHoursApproved, BigDecimal extraHrReqDeclined, Double extraHrHoursDeclined, BigDecimal extraHrReqRtcWaiting,
-			Double extraHrHoursRtcWaiting, BigDecimal vtoReqAutoApproved, Double vtoHourAutoApproved, BigDecimal vtoReqApproved,
-			Double vtoHoursApproved, BigDecimal vtoReqDeclined, Double vtoHoursDeclined, BigDecimal vtoReqRtcWaiting,
-			Double vtoHoursRtcWaiting, BigDecimal ttlSwap, Double ttlSwapHr, BigDecimal tradeReq, BigDecimal ttlTradeAccepted,
+	public SummaryReportDto(Long totalAgent, Long totalAgentParticipating, Long currentDayActiveAgent, Long ssActiveAgents,
+			Double scheduleHr, Long extraHrReqAutoApproved, Double extraHrHourAutoApproved, Long extraHrReqApproved,
+			Double extraHrHoursApproved, Long extraHrReqDeclined, Double extraHrHoursDeclined, Long extraHrReqRtcWaiting,
+			Double extraHrHoursRtcWaiting, Long vtoReqAutoApproved, Double vtoHourAutoApproved, Long vtoReqApproved,
+			Double vtoHoursApproved, Long vtoReqDeclined, Double vtoHoursDeclined, Long vtoReqRtcWaiting,
+			Double vtoHoursRtcWaiting, Long ttlSwap, Double ttlSwapHr, Long tradeReq, Long ttlTradeAccepted,
 			Double ttlTradeHr, Double extraHrRulerCmdAgent, Double extraHrRtcApproved, Double extraHrAgtAccepted,
 			Double extraHrAgtDecliend, Double extraHrAgtNores, Double vtoHourRulerCmdAgent, Double vtoHourRtcApproved,
 			Double vtoHourAgtAccepted, Double vtoHourAgtDecliend, Double vtoHourAgtNores) {
@@ -118,42 +117,30 @@ public class SummaryReportDto{
 		this.vtoHourAgtNores = vtoHourAgtNores;
 	}
 	
-	public SummaryReportDto(Long totalAgent, Long totalAgentParticipating, Long currentDayActiveAgent, Long ssActiveAgents,
-			Double scheduleHr, Long extraHrReqAutoApproved, Double extraHrHourAutoApproved, Long extraHrReqApproved,
-			Double extraHrHoursApproved, Long extraHrReqDeclined, Double extraHrHoursDeclined, Long extraHrReqRtcWaiting,
-			Double extraHrHoursRtcWaiting, Long vtoReqAutoApproved, Double vtoHourAutoApproved, Long vtoReqApproved,
-			Double vtoHoursApproved, Long vtoReqDeclined, Double vtoHoursDeclined, Long vtoReqRtcWaiting,
-			Double vtoHoursRtcWaiting, Long ttlSwap, Double ttlSwapHr, Long tradeReq, Long ttlTradeAccepted,
-			Double ttlTradeHr, Double extraHrRulerCmdAgent, Double extraHrRtcApproved, Double extraHrAgtAccepted,
-			Double extraHrAgtDecliend, Double extraHrAgtNores, Double vtoHourRulerCmdAgent, Double vtoHourRtcApproved,
-			Double vtoHourAgtAccepted, Double vtoHourAgtDecliend, Double vtoHourAgtNores) {
-		super();
-		
-	}
 	
 
-	public BigDecimal getTotalAgent() {
+	public Long getTotalAgent() {
 		return totalAgent;
 	}
-	public void setTotalAgent(BigDecimal totalAgent) {
+	public void setTotalAgent(Long totalAgent) {
 		this.totalAgent = totalAgent;
 	}
-	public BigDecimal getTotalAgentParticipating() {
+	public Long getTotalAgentParticipating() {
 		return totalAgentParticipating;
 	}
-	public void setTotalAgentParticipating(BigDecimal totalAgentParticipating) {
+	public void setTotalAgentParticipating(Long totalAgentParticipating) {
 		this.totalAgentParticipating = totalAgentParticipating;
 	}
-	public BigDecimal getCurrentDayActiveAgent() {
+	public Long getCurrentDayActiveAgent() {
 		return currentDayActiveAgent;
 	}
-	public void setCurrentDayActiveAgent(BigDecimal currentDayActiveAgent) {
+	public void setCurrentDayActiveAgent(Long currentDayActiveAgent) {
 		this.currentDayActiveAgent = currentDayActiveAgent;
 	}
-	public BigDecimal getSsActiveAgents() {
+	public Long getSsActiveAgents() {
 		return ssActiveAgents;
 	}
-	public void setSsActiveAgents(BigDecimal ssActiveAgents) {
+	public void setSsActiveAgents(Long ssActiveAgents) {
 		this.ssActiveAgents = ssActiveAgents;
 	}
 	public Double getScheduleChangeToLoggedInAgents() {
@@ -192,10 +179,10 @@ public class SummaryReportDto{
 	public void setScheduleHr(Double scheduleHr) {
 		this.scheduleHr = scheduleHr;
 	}
-	public BigDecimal getExtraHrRequest() {
+	public Long getExtraHrRequest() {
 		return extraHrRequest;
 	}
-	public void setExtraHrRequest(BigDecimal extraHrRequest) {
+	public void setExtraHrRequest(Long extraHrRequest) {
 		this.extraHrRequest = extraHrRequest;
 	}
 	public Double getExtraHrTotal() {
@@ -204,10 +191,10 @@ public class SummaryReportDto{
 	public void setExtraHrTotal(Double extraHrTotal) {
 		this.extraHrTotal = extraHrTotal;
 	}
-	public BigDecimal getExtraHrReqAutoApproved() {
+	public Long getExtraHrReqAutoApproved() {
 		return extraHrReqAutoApproved;
 	}
-	public void setExtraHrReqAutoApproved(BigDecimal extraHrReqAutoApproved) {
+	public void setExtraHrReqAutoApproved(Long extraHrReqAutoApproved) {
 		this.extraHrReqAutoApproved = extraHrReqAutoApproved;
 	}
 	public Double getExtraHrHourAutoApproved() {
@@ -216,10 +203,10 @@ public class SummaryReportDto{
 	public void setExtraHrHourAutoApproved(Double extraHrHourAutoApproved) {
 		this.extraHrHourAutoApproved = extraHrHourAutoApproved;
 	}
-	public BigDecimal getExtraHrReqApproved() {
+	public Long getExtraHrReqApproved() {
 		return extraHrReqApproved;
 	}
-	public void setExtraHrReqApproved(BigDecimal extraHrReqApproved) {
+	public void setExtraHrReqApproved(Long extraHrReqApproved) {
 		this.extraHrReqApproved = extraHrReqApproved;
 	}
 	public Double getExtraHrHoursApproved() {
@@ -228,10 +215,10 @@ public class SummaryReportDto{
 	public void setExtraHrHoursApproved(Double extraHrHoursApproved) {
 		this.extraHrHoursApproved = extraHrHoursApproved;
 	}
-	public BigDecimal getExtraHrReqDeclined() {
+	public Long getExtraHrReqDeclined() {
 		return extraHrReqDeclined;
 	}
-	public void setExtraHrReqDeclined(BigDecimal extraHrReqDeclined) {
+	public void setExtraHrReqDeclined(Long extraHrReqDeclined) {
 		this.extraHrReqDeclined = extraHrReqDeclined;
 	}
 	public Double getExtraHrHoursDeclined() {
@@ -240,10 +227,10 @@ public class SummaryReportDto{
 	public void setExtraHrHoursDeclined(Double extraHrHoursDeclined) {
 		this.extraHrHoursDeclined = extraHrHoursDeclined;
 	}
-	public BigDecimal getExtraHrReqRtcWaiting() {
+	public Long getExtraHrReqRtcWaiting() {
 		return extraHrReqRtcWaiting;
 	}
-	public void setExtraHrReqRtcWaiting(BigDecimal extraHrReqRtcWaiting) {
+	public void setExtraHrReqRtcWaiting(Long extraHrReqRtcWaiting) {
 		this.extraHrReqRtcWaiting = extraHrReqRtcWaiting;
 	}
 	public Double getExtraHrHoursRtcWaiting() {
@@ -252,10 +239,10 @@ public class SummaryReportDto{
 	public void setExtraHrHoursRtcWaiting(Double extraHrHoursRtcWaiting) {
 		this.extraHrHoursRtcWaiting = extraHrHoursRtcWaiting;
 	}
-	public BigDecimal getVtoHrRequest() {
+	public Long getVtoHrRequest() {
 		return vtoHrRequest;
 	}
-	public void setVtoHrRequest(BigDecimal vtoHrRequest) {
+	public void setVtoHrRequest(Long vtoHrRequest) {
 		this.vtoHrRequest = vtoHrRequest;
 	}
 	public Double getVtoHrTotal() {
@@ -264,10 +251,10 @@ public class SummaryReportDto{
 	public void setVtoHrTotal(Double vtoHrTotal) {
 		this.vtoHrTotal = vtoHrTotal;
 	}
-	public BigDecimal getVtoReqAutoApproved() {
+	public Long getVtoReqAutoApproved() {
 		return vtoReqAutoApproved;
 	}
-	public void setVtoReqAutoApproved(BigDecimal vtoReqAutoApproved) {
+	public void setVtoReqAutoApproved(Long vtoReqAutoApproved) {
 		this.vtoReqAutoApproved = vtoReqAutoApproved;
 	}
 	public Double getVtoHourAutoApproved() {
@@ -276,10 +263,10 @@ public class SummaryReportDto{
 	public void setVtoHourAutoApproved(Double vtoHourAutoApproved) {
 		this.vtoHourAutoApproved = vtoHourAutoApproved;
 	}
-	public BigDecimal getVtoReqApproved() {
+	public Long getVtoReqApproved() {
 		return vtoReqApproved;
 	}
-	public void setVtoReqApproved(BigDecimal vtoReqApproved) {
+	public void setVtoReqApproved(Long vtoReqApproved) {
 		this.vtoReqApproved = vtoReqApproved;
 	}
 	public Double getVtoHoursApproved() {
@@ -288,10 +275,10 @@ public class SummaryReportDto{
 	public void setVtoHoursApproved(Double vtoHoursApproved) {
 		this.vtoHoursApproved = vtoHoursApproved;
 	}
-	public BigDecimal getVtoReqDeclined() {
+	public Long getVtoReqDeclined() {
 		return vtoReqDeclined;
 	}
-	public void setVtoReqDeclined(BigDecimal vtoReqDeclined) {
+	public void setVtoReqDeclined(Long vtoReqDeclined) {
 		this.vtoReqDeclined = vtoReqDeclined;
 	}
 	public Double getVtoHoursDeclined() {
@@ -300,10 +287,10 @@ public class SummaryReportDto{
 	public void setVtoHoursDeclined(Double vtoHoursDeclined) {
 		this.vtoHoursDeclined = vtoHoursDeclined;
 	}
-	public BigDecimal getVtoReqRtcWaiting() {
+	public Long getVtoReqRtcWaiting() {
 		return vtoReqRtcWaiting;
 	}
-	public void setVtoReqRtcWaiting(BigDecimal vtoReqRtcWaiting) {
+	public void setVtoReqRtcWaiting(Long vtoReqRtcWaiting) {
 		this.vtoReqRtcWaiting = vtoReqRtcWaiting;
 	}
 	public Double getVtoHoursRtcWaiting() {
@@ -312,10 +299,10 @@ public class SummaryReportDto{
 	public void setVtoHoursRtcWaiting(Double vtoHoursRtcWaiting) {
 		this.vtoHoursRtcWaiting = vtoHoursRtcWaiting;
 	}
-	public BigDecimal getTtlSwap() {
+	public Long getTtlSwap() {
 		return ttlSwap;
 	}
-	public void setTtlSwap(BigDecimal ttlSwap) {
+	public void setTtlSwap(Long ttlSwap) {
 		this.ttlSwap = ttlSwap;
 	}
 	public Double getTtlSwapHr() {
@@ -324,16 +311,16 @@ public class SummaryReportDto{
 	public void setTtlSwapHr(Double ttlSwapHr) {
 		this.ttlSwapHr = ttlSwapHr;
 	}
-	public BigDecimal getTradeReq() {
+	public Long getTradeReq() {
 		return tradeReq;
 	}
-	public void setTradeReq(BigDecimal tradeReq) {
+	public void setTradeReq(Long tradeReq) {
 		this.tradeReq = tradeReq;
 	}
-	public BigDecimal getTtlTradeAccepted() {
+	public Long getTtlTradeAccepted() {
 		return ttlTradeAccepted;
 	}
-	public void setTtlTradeAccepted(BigDecimal ttlTradeAccepted) {
+	public void setTtlTradeAccepted(Long ttlTradeAccepted) {
 		this.ttlTradeAccepted = ttlTradeAccepted;
 	}
 	public Double getTtlTradeHr() {

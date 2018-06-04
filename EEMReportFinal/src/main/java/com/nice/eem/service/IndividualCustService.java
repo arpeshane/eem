@@ -26,4 +26,6 @@ public interface IndividualCustService{
         * @return
         */
        public EemIndividualCustomer findByCustName(String custName); 
+       public String getCustomerStartDay(String custName);
+       public List<EemIndividualCustomer> getActiveCustomers();
 }
