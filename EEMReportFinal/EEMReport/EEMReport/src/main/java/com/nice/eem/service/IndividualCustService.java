@@ -6,7 +6,6 @@
 package com.nice.eem.service;
 
 import com.nice.eem.entity.EemIndividualCustomer;
-
 import java.util.List;
 
 /**
@@ -20,10 +19,13 @@ public interface IndividualCustService{
        public List getCustomers();
        public List getCustomerEmail(Long custid);
        public List getCustomerName();
+       public String getCustomerStartDay(String custName);
+       public List<EemIndividualCustomer> getActiveCustomers();
        /**
         * @author AJIT  
         * @param custName
         * @return
         */
        public EemIndividualCustomer findByCustName(String custName); 
+
 }

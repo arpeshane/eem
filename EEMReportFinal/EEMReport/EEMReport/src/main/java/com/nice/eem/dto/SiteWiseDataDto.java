@@ -6,18 +6,20 @@ import java.util.Date;
  * @author ajit.p
  *
  */
-public class SiteWiseDataDto extends BaseCustomerDto {
+
+public class SiteWiseDataDto {
 
 	private static final long serialVersionUID = 1L;
 	
-	private int ssActiveAgents;
-	private int totalAgent;
-	private int totalAgentParticipating;
-	private int currentDayActiveAgent;
-	private int extraHrReqApproved;
-	private int extraHrReqDeclined;
-	private int extraHrReqRtcWaiting;
-	private int extraHrReqAutoApproved;
+	private long id;
+	private long ssActiveAgents;
+	private long totalAgent;
+	private long totalAgentParticipating;
+	private long currentDayActiveAgent;
+	private long extraHrReqApproved;
+	private long extraHrReqDeclined;
+	private long extraHrReqRtcWaiting;
+	private long extraHrReqAutoApproved;
 	private double extraHrHoursApproved;
 	private double extraHrHoursDeclined;
 	private double extraHrHoursRtcWaiting;
@@ -27,10 +29,10 @@ public class SiteWiseDataDto extends BaseCustomerDto {
 	private double extraHrAgtAccepted;
 	private double extraHrAgtDecliend;
 	private double extraHrAgtNores;
-	private int vtoReqApproved;
-	private int vtoReqDeclined;
-	private int vtoReqRtcWaiting;
-	private int vtoReqAutoApproved;
+	private long vtoReqApproved;
+	private long vtoReqDeclined;
+	private long vtoReqRtcWaiting;
+	private long vtoReqAutoApproved;
 	private double vtoHoursApproved;
 	private double vtoHoursDeclined;
 	private double vtoHoursRtcWaiting;
@@ -40,321 +42,332 @@ public class SiteWiseDataDto extends BaseCustomerDto {
 	private double vtoHourAgtAccepted;
 	private double vtoHourAgtDecliend;
 	private double vtoHourAgtNores;
-	private int ttlSwap;
+	private long ttlSwap;
 	private double ttlSwapHr;
-	private int tradeReq;
-	private int ttlTradeAccepted;
+	private long tradeReq;
+	private long ttlTradeAccepted;
 	private double ttlTradeHr;
 	private double scheduleHr;
 	private String programName;
 	private Date ctzDateTime;
-	private int siteId;
+	private long siteId;
 	private String siteName;
 	
 	
 	public SiteWiseDataDto() {
 		super();
 	}
-	public SiteWiseDataDto(int ssactiveagents, int totalagent,
-			int totalagentparticipating, int currentdayactivegent,
-			int extrahrreqdeclined, int extrahrreqapproved,
-			int extrahrreqrtcwaiting, int extrahrreqautoapproved,
-			double extrahrhoursapproved, double extrahrhoursdeclined,
-			double extrahrhoursrtcwaiting, double extrahrhourautoapproved,
-			double extrahrrulercmdagent, double extrahrrtcapproved,
-			double extrahragtaccepted, double extrahragtdecliend,
-			double extrahragtnores, int vtoreqapproved, int vtoreqdeclined,
-			int vtoreqrtcwaiting, int vtoreqautoapproved,
-			double vtohoursapproved, double vtohoursdeclined,
-			double vtohoursrtcwaiting, double vtohourautoapproved,
-			double vtohourrulercmdagent, double vtohourrtcapproved,
-			double vtohouragtaccepted, double vtohouragtdecliend,
-			double vtohouragtnores, int ttlswap, double ttlswaphr,
-			int tradereq, int ttltrade_accepted, double ttltradehr,
-			double schedulehr, String programname, Date ctzdatetime,
-			int siteid, String sitename) {
-		super();
-		this.ssActiveAgents = ssactiveagents;
-		this.totalAgent = totalagent;
-		this.totalAgentParticipating = totalagentparticipating;
-		this.currentDayActiveAgent = currentdayactivegent;
-		this.extraHrReqDeclined = extrahrreqdeclined;
-		this.extraHrReqApproved = extrahrreqapproved;
-		this.extraHrReqRtcWaiting = extrahrreqrtcwaiting;
-		this.extraHrReqAutoApproved = extrahrreqautoapproved;
-		this.extraHrHoursApproved = extrahrhoursapproved;
-		this.extraHrHoursDeclined = extrahrhoursdeclined;
-		this.extraHrHoursRtcWaiting = extrahrhoursrtcwaiting;
-		this.extraHrHourAutoApproved = extrahrhourautoapproved;
-		this.extraHrRulerCmdAgent = extrahrrulercmdagent;
-		this.extraHrRtcApproved = extrahrrtcapproved;
-		this.extraHrAgtAccepted = extrahragtaccepted;
-		this.extraHrAgtDecliend = extrahragtdecliend;
-		this.extraHrAgtNores = extrahragtnores;
-		this.vtoReqApproved = vtoreqapproved;
-		this.vtoReqDeclined = vtoreqdeclined;
-		this.vtoReqRtcWaiting = vtoreqrtcwaiting;
-		this.vtoReqAutoApproved = vtoreqautoapproved;
-		this.vtoHoursApproved = vtohoursapproved;
-		this.vtoHoursDeclined = vtohoursdeclined;
-		this.vtoHoursRtcWaiting = vtohoursrtcwaiting;
-		this.vtoHourAutoApproved = vtohourautoapproved;
-		this.vtoHourRulerCmdAgent = vtohourrulercmdagent;
-		this.vtoHourRtcApproved = vtohourrtcapproved;
-		this.vtoHourAgtAccepted = vtohouragtaccepted;
-		this.vtoHourAgtDecliend = vtohouragtdecliend;
-		this.vtoHourAgtNores = vtohouragtnores;
-		this.ttlSwap = ttlswap;
-		this.ttlSwapHr = ttlswaphr;
-		this.tradeReq = tradereq;
-		this.ttlTradeAccepted = ttltrade_accepted;
-		this.ttlTradeHr = ttltradehr;
-		this.scheduleHr = schedulehr;
-		this.programName = programname;
-		this.ctzDateTime = ctzdatetime;
-		this.siteId = siteid;
-		this.siteName = sitename;
+	
+	public SiteWiseDataDto(long id,String programName, Date ctzDateTime,
+			long ssActiveAgents, long totalAgent, long totalAgentParticipating,
+			long extraHrReqApproved, long extraHrReqDeclined,
+			long extraHrReqAutoApproved, double extraHrHoursApproved,
+			double extraHrHoursDeclined, double extraHrHourAutoApproved,
+			double extraHrRulerCmdAgent, double extraHrRtcApproved,
+			double extraHrAgtAccepted, double extraHrAgtDecliend,
+			double extraHrAgtNores, long vtoReqApproved, long vtoReqDeclined,
+			long vtoReqAutoApproved, double vtoHoursApproved,
+			double vtoHoursDeclined, double vtoHourAutoApproved,
+			double vtoHourRulerCmdAgent, double vtoHourRtcApproved,
+			double vtoHourAgtAccepted, double vtoHourAgtDecliend,
+			double vtoHourAgtNores, long ttlSwap, double ttlSwapHr,
+			long tradeReq, long ttlTradeAccepted, double ttlTradeHr,
+			double scheduleHr, long currentDayActiveAgent,
+			long extraHrReqRtcWaiting, double extraHrHoursRtcWaiting,
+			long vtoReqRtcWaiting, double vtoHoursRtcWaiting, long siteId,String siteName ){
+		
+		this.id=id;
+		this.programName = programName;
+		this.ctzDateTime = ctzDateTime;
+		this.ssActiveAgents = ssActiveAgents;
+		this.totalAgent = totalAgent;
+		this.totalAgentParticipating = totalAgentParticipating;
+		this.extraHrReqApproved = extraHrReqApproved;
+		this.extraHrReqDeclined=extraHrReqDeclined;
+		this.extraHrReqAutoApproved = extraHrReqAutoApproved;
+		this.extraHrHoursApproved = extraHrHoursApproved;
+		this.extraHrHoursDeclined = extraHrHoursDeclined;
+		this.extraHrHourAutoApproved = extraHrHourAutoApproved;
+		this.extraHrRulerCmdAgent = extraHrRulerCmdAgent;
+		this.extraHrRtcApproved = extraHrRtcApproved;
+		this.extraHrAgtAccepted = extraHrAgtAccepted;
+		this.extraHrAgtDecliend = extraHrAgtDecliend;
+		this.extraHrAgtNores = extraHrAgtNores;
+		this.vtoReqApproved = vtoReqApproved;
+		this.vtoReqDeclined = vtoReqDeclined;
+		this.vtoReqAutoApproved = vtoReqAutoApproved;
+		this.vtoHoursApproved = vtoHoursApproved;
+		this.vtoHoursDeclined = vtoHoursDeclined;
+		this.vtoHourAutoApproved = vtoHourAutoApproved;
+		this.vtoHourRulerCmdAgent = vtoHourRulerCmdAgent;
+		this.vtoHourRtcApproved = vtoHourRtcApproved;
+		this.vtoHourAgtAccepted = vtoHourAgtAccepted;
+		this.vtoHourAgtDecliend = vtoHourAgtDecliend;
+		this.vtoHourAgtNores = vtoHourAgtNores;
+		this.ttlSwap = ttlSwap;
+		this.ttlSwapHr = ttlSwapHr;
+		this.tradeReq = tradeReq;
+		this.ttlTradeAccepted = ttlTradeAccepted;
+		this.ttlTradeHr = ttlTradeHr;
+		this.scheduleHr = scheduleHr;
+		this.currentDayActiveAgent = currentDayActiveAgent;
+		this.extraHrReqRtcWaiting = extraHrReqRtcWaiting;
+		this.extraHrHoursRtcWaiting = extraHrHoursRtcWaiting;
+		this.vtoReqRtcWaiting = vtoReqRtcWaiting;
+		this.vtoHoursRtcWaiting = vtoHoursRtcWaiting;
+		this.siteId = siteId;
+		this.siteName = siteName;
 	}
-	public int getSsactiveagents() {
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public long getSsActiveAgents() {
 		return ssActiveAgents;
 	}
-	public void setSsactiveagents(int ssactiveagents) {
-		this.ssActiveAgents = ssactiveagents;
+	public void setSsActiveAgents(long ssActiveAgents) {
+		this.ssActiveAgents = ssActiveAgents;
 	}
-	public int getTotalagent() {
+	public long getTotalAgent() {
 		return totalAgent;
 	}
-	public void setTotalagent(int totalagent) {
-		this.totalAgent = totalagent;
+	public void setTotalAgent(long totalAgent) {
+		this.totalAgent = totalAgent;
 	}
-	public int getTotalagentparticipating() {
+	public long getTotalAgentParticipating() {
 		return totalAgentParticipating;
 	}
-	public void setTotalagentparticipating(int totalagentparticipating) {
-		this.totalAgentParticipating = totalagentparticipating;
+	public void setTotalAgentParticipating(long totalAgentParticipating) {
+		this.totalAgentParticipating = totalAgentParticipating;
 	}
-	public int getCurrentdayactivegent() {
+	public long getCurrentDayActiveAgent() {
 		return currentDayActiveAgent;
 	}
-	public void setCurrentdayactivegent(int currentdayactivegent) {
-		this.currentDayActiveAgent = currentdayactivegent;
+	public void setCurrentDayActiveAgent(long currentDayActiveAgent) {
+		this.currentDayActiveAgent = currentDayActiveAgent;
 	}
-	public int getExtrahrreqdeclined() {
-		return extraHrReqDeclined;
-	}
-	public void setExtrahrreqdeclined(int extrahrreqdeclined) {
-		this.extraHrReqDeclined = extrahrreqdeclined;
-	}
-	public int getExtrahrreqapproved() {
+	public long getExtraHrReqApproved() {
 		return extraHrReqApproved;
 	}
-	public void setExtrahrreqapproved(int extrahrreqapproved) {
-		this.extraHrReqApproved = extrahrreqapproved;
+	public void setExtraHrReqApproved(long extraHrReqApproved) {
+		this.extraHrReqApproved = extraHrReqApproved;
 	}
-	public int getExtrahrreqrtcwaiting() {
+	public long getExtraHrReqDeclined() {
+		return extraHrReqDeclined;
+	}
+	public void setExtraHrReqDeclined(long extraHrReqDeclined) {
+		this.extraHrReqDeclined = extraHrReqDeclined;
+	}
+	public long getExtraHrReqRtcWaiting() {
 		return extraHrReqRtcWaiting;
 	}
-	public void setExtrahrreqrtcwaiting(int extrahrreqrtcwaiting) {
-		this.extraHrReqRtcWaiting = extrahrreqrtcwaiting;
+	public void setExtraHrReqRtcWaiting(long extraHrReqRtcWaiting) {
+		this.extraHrReqRtcWaiting = extraHrReqRtcWaiting;
 	}
-	public int getExtrahrreqautoapproved() {
+	public long getExtraHrReqAutoApproved() {
 		return extraHrReqAutoApproved;
 	}
-	public void setExtrahrreqautoapproved(int extrahrreqautoapproved) {
-		this.extraHrReqAutoApproved = extrahrreqautoapproved;
+	public void setExtraHrReqAutoApproved(long extraHrReqAutoApproved) {
+		this.extraHrReqAutoApproved = extraHrReqAutoApproved;
 	}
-	public double getExtrahrhoursapproved() {
+	public double getExtraHrHoursApproved() {
 		return extraHrHoursApproved;
 	}
-	public void setExtrahrhoursapproved(double extrahrhoursapproved) {
-		this.extraHrHoursApproved = extrahrhoursapproved;
+	public void setExtraHrHoursApproved(double extraHrHoursApproved) {
+		this.extraHrHoursApproved = extraHrHoursApproved;
 	}
-	public double getExtrahrhoursdeclined() {
+	public double getExtraHrHoursDeclined() {
 		return extraHrHoursDeclined;
 	}
-	public void setExtrahrhoursdeclined(double extrahrhoursdeclined) {
-		this.extraHrHoursDeclined = extrahrhoursdeclined;
+	public void setExtraHrHoursDeclined(double extraHrHoursDeclined) {
+		this.extraHrHoursDeclined = extraHrHoursDeclined;
 	}
-	public double getExtrahrhoursrtcwaiting() {
+	public double getExtraHrHoursRtcWaiting() {
 		return extraHrHoursRtcWaiting;
 	}
-	public void setExtrahrhoursrtcwaiting(double extrahrhoursrtcwaiting) {
-		this.extraHrHoursRtcWaiting = extrahrhoursrtcwaiting;
+	public void setExtraHrHoursRtcWaiting(double extraHrHoursRtcWaiting) {
+		this.extraHrHoursRtcWaiting = extraHrHoursRtcWaiting;
 	}
-	public double getExtrahrhourautoapproved() {
+	public double getExtraHrHourAutoApproved() {
 		return extraHrHourAutoApproved;
 	}
-	public void setExtrahrhourautoapproved(double extrahrhourautoapproved) {
-		this.extraHrHourAutoApproved = extrahrhourautoapproved;
+	public void setExtraHrHourAutoApproved(double extraHrHourAutoApproved) {
+		this.extraHrHourAutoApproved = extraHrHourAutoApproved;
 	}
-	public double getExtrahrrulercmdagent() {
+	public double getExtraHrRulerCmdAgent() {
 		return extraHrRulerCmdAgent;
 	}
-	public void setExtrahrrulercmdagent(double extrahrrulercmdagent) {
-		this.extraHrRulerCmdAgent = extrahrrulercmdagent;
+	public void setExtraHrRulerCmdAgent(double extraHrRulerCmdAgent) {
+		this.extraHrRulerCmdAgent = extraHrRulerCmdAgent;
 	}
-	public double getExtrahrrtcapproved() {
+	public double getExtraHrRtcApproved() {
 		return extraHrRtcApproved;
 	}
-	public void setExtrahrrtcapproved(double extrahrrtcapproved) {
-		this.extraHrRtcApproved = extrahrrtcapproved;
+	public void setExtraHrRtcApproved(double extraHrRtcApproved) {
+		this.extraHrRtcApproved = extraHrRtcApproved;
 	}
-	public double getExtrahragtaccepted() {
+	public double getExtraHrAgtAccepted() {
 		return extraHrAgtAccepted;
 	}
-	public void setExtrahragtaccepted(double extrahragtaccepted) {
-		this.extraHrAgtAccepted = extrahragtaccepted;
+	public void setExtraHrAgtAccepted(double extraHrAgtAccepted) {
+		this.extraHrAgtAccepted = extraHrAgtAccepted;
 	}
-	public double getExtrahragtdecliend() {
+	public double getExtraHrAgtDecliend() {
 		return extraHrAgtDecliend;
 	}
-	public void setExtrahragtdecliend(double extrahragtdecliend) {
-		this.extraHrAgtDecliend = extrahragtdecliend;
+	public void setExtraHrAgtDecliend(double extraHrAgtDecliend) {
+		this.extraHrAgtDecliend = extraHrAgtDecliend;
 	}
-	public double getExtrahragtnores() {
+	public double getExtraHrAgtNores() {
 		return extraHrAgtNores;
 	}
-	public void setExtrahragtnores(double extrahragtnores) {
-		this.extraHrAgtNores = extrahragtnores;
+	public void setExtraHrAgtNores(double extraHrAgtNores) {
+		this.extraHrAgtNores = extraHrAgtNores;
 	}
-	public int getVtoreqapproved() {
+	public long getVtoReqApproved() {
 		return vtoReqApproved;
 	}
-	public void setVtoreqapproved(int vtoreqapproved) {
-		this.vtoReqApproved = vtoreqapproved;
+	public void setVtoReqApproved(long vtoReqApproved) {
+		this.vtoReqApproved = vtoReqApproved;
 	}
-	public int getVtoreqdeclined() {
+	public long getVtoReqDeclined() {
 		return vtoReqDeclined;
 	}
-	public void setVtoreqdeclined(int vtoreqdeclined) {
-		this.vtoReqDeclined = vtoreqdeclined;
+	public void setVtoReqDeclined(long vtoReqDeclined) {
+		this.vtoReqDeclined = vtoReqDeclined;
 	}
-	public int getVtoreqrtcwaiting() {
+	public long getVtoReqRtcWaiting() {
 		return vtoReqRtcWaiting;
 	}
-	public void setVtoreqrtcwaiting(int vtoreqrtcwaiting) {
-		this.vtoReqRtcWaiting = vtoreqrtcwaiting;
+	public void setVtoReqRtcWaiting(long vtoReqRtcWaiting) {
+		this.vtoReqRtcWaiting = vtoReqRtcWaiting;
 	}
-	public int getVtoreqautoapproved() {
+	public long getVtoReqAutoApproved() {
 		return vtoReqAutoApproved;
 	}
-	public void setVtoreqautoapproved(int vtoreqautoapproved) {
-		this.vtoReqAutoApproved = vtoreqautoapproved;
+	public void setVtoReqAutoApproved(long vtoReqAutoApproved) {
+		this.vtoReqAutoApproved = vtoReqAutoApproved;
 	}
-	public double getVtohoursapproved() {
+	public double getVtoHoursApproved() {
 		return vtoHoursApproved;
 	}
-	public void setVtohoursapproved(double vtohoursapproved) {
-		this.vtoHoursApproved = vtohoursapproved;
+	public void setVtoHoursApproved(double vtoHoursApproved) {
+		this.vtoHoursApproved = vtoHoursApproved;
 	}
-	public double getVtohoursdeclined() {
+	public double getVtoHoursDeclined() {
 		return vtoHoursDeclined;
 	}
-	public void setVtohoursdeclined(double vtohoursdeclined) {
-		this.vtoHoursDeclined = vtohoursdeclined;
+	public void setVtoHoursDeclined(double vtoHoursDeclined) {
+		this.vtoHoursDeclined = vtoHoursDeclined;
 	}
-	public double getVtohoursrtcwaiting() {
+	public double getVtoHoursRtcWaiting() {
 		return vtoHoursRtcWaiting;
 	}
-	public void setVtohoursrtcwaiting(double vtohoursrtcwaiting) {
-		this.vtoHoursRtcWaiting = vtohoursrtcwaiting;
+	public void setVtoHoursRtcWaiting(double vtoHoursRtcWaiting) {
+		this.vtoHoursRtcWaiting = vtoHoursRtcWaiting;
 	}
-	public double getVtohourautoapproved() {
+	public double getVtoHourAutoApproved() {
 		return vtoHourAutoApproved;
 	}
-	public void setVtohourautoapproved(double vtohourautoapproved) {
-		this.vtoHourAutoApproved = vtohourautoapproved;
+	public void setVtoHourAutoApproved(double vtoHourAutoApproved) {
+		this.vtoHourAutoApproved = vtoHourAutoApproved;
 	}
-	public double getVtohourrulercmdagent() {
+	public double getVtoHourRulerCmdAgent() {
 		return vtoHourRulerCmdAgent;
 	}
-	public void setVtohourrulercmdagent(double vtohourrulercmdagent) {
-		this.vtoHourRulerCmdAgent = vtohourrulercmdagent;
+	public void setVtoHourRulerCmdAgent(double vtoHourRulerCmdAgent) {
+		this.vtoHourRulerCmdAgent = vtoHourRulerCmdAgent;
 	}
-	public double getVtohourrtcapproved() {
+	public double getVtoHourRtcApproved() {
 		return vtoHourRtcApproved;
 	}
-	public void setVtohourrtcapproved(double vtohourrtcapproved) {
-		this.vtoHourRtcApproved = vtohourrtcapproved;
+	public void setVtoHourRtcApproved(double vtoHourRtcApproved) {
+		this.vtoHourRtcApproved = vtoHourRtcApproved;
 	}
-	public double getVtohouragtaccepted() {
+	public double getVtoHourAgtAccepted() {
 		return vtoHourAgtAccepted;
 	}
-	public void setVtohouragtaccepted(double vtohouragtaccepted) {
-		this.vtoHourAgtAccepted = vtohouragtaccepted;
+	public void setVtoHourAgtAccepted(double vtoHourAgtAccepted) {
+		this.vtoHourAgtAccepted = vtoHourAgtAccepted;
 	}
-	public double getVtohouragtdecliend() {
+	public double getVtoHourAgtDecliend() {
 		return vtoHourAgtDecliend;
 	}
-	public void setVtohouragtdecliend(double vtohouragtdecliend) {
-		this.vtoHourAgtDecliend = vtohouragtdecliend;
+	public void setVtoHourAgtDecliend(double vtoHourAgtDecliend) {
+		this.vtoHourAgtDecliend = vtoHourAgtDecliend;
 	}
-	public double getVtohouragtnores() {
+	public double getVtoHourAgtNores() {
 		return vtoHourAgtNores;
 	}
-	public void setVtohouragtnores(double vtohouragtnores) {
-		this.vtoHourAgtNores = vtohouragtnores;
+	public void setVtoHourAgtNores(double vtoHourAgtNores) {
+		this.vtoHourAgtNores = vtoHourAgtNores;
 	}
-	public int getTtlswap() {
+	public long getTtlSwap() {
 		return ttlSwap;
 	}
-	public void setTtlswap(int ttlswap) {
-		this.ttlSwap = ttlswap;
+	public void setTtlSwap(long ttlSwap) {
+		this.ttlSwap = ttlSwap;
 	}
-	public double getTtlswaphr() {
+	public double getTtlSwapHr() {
 		return ttlSwapHr;
 	}
-	public void setTtlswaphr(double ttlswaphr) {
-		this.ttlSwapHr = ttlswaphr;
+	public void setTtlSwapHr(double ttlSwapHr) {
+		this.ttlSwapHr = ttlSwapHr;
 	}
-	public int getTradereq() {
+	public long getTradeReq() {
 		return tradeReq;
 	}
-	public void setTradereq(int tradereq) {
-		this.tradeReq = tradereq;
+	public void setTradeReq(long tradeReq) {
+		this.tradeReq = tradeReq;
 	}
-	public int getTtltrade_accepted() {
+	public long getTtlTradeAccepted() {
 		return ttlTradeAccepted;
 	}
-	public void setTtltrade_accepted(int ttltrade_accepted) {
-		this.ttlTradeAccepted = ttltrade_accepted;
+	public void setTtlTradeAccepted(long ttlTradeAccepted) {
+		this.ttlTradeAccepted = ttlTradeAccepted;
 	}
-	public double getTtltradehr() {
+	public double getTtlTradeHr() {
 		return ttlTradeHr;
 	}
-	public void setTtltradehr(double ttltradehr) {
-		this.ttlTradeHr = ttltradehr;
+	public void setTtlTradeHr(double ttlTradeHr) {
+		this.ttlTradeHr = ttlTradeHr;
 	}
-	public double getSchedulehr() {
+	public double getScheduleHr() {
 		return scheduleHr;
 	}
-	public void setSchedulehr(double schedulehr) {
-		this.scheduleHr = schedulehr;
+	public void setScheduleHr(double scheduleHr) {
+		this.scheduleHr = scheduleHr;
 	}
-	public String getProgramname() {
+	public String getProgramName() {
 		return programName;
 	}
-	public void setProgramname(String programname) {
-		this.programName = programname;
+	public void setProgramName(String programName) {
+		this.programName = programName;
 	}
-	public Date getCtzdatetime() {
+	public Date getCtzDateTime() {
 		return ctzDateTime;
 	}
-	public void setCtzdatetime(Date ctzdatetime) {
-		this.ctzDateTime = ctzdatetime;
+	public void setCtzDateTime(Date ctzDateTime) {
+		this.ctzDateTime = ctzDateTime;
 	}
-	public int getSiteid() {
+	public long getSiteId() {
 		return siteId;
 	}
-	public void setSiteid(int siteid) {
-		this.siteId = siteid;
+	public void setSiteId(long siteId) {
+		this.siteId = siteId;
 	}
-	public String getSitename() {
+	public String getSiteName() {
 		return siteName;
 	}
-	public void setSitename(String sitename) {
-		this.siteName = sitename;
+	public void setSiteName(String siteName) {
+		this.siteName = siteName;
 	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
 	
 	
 }

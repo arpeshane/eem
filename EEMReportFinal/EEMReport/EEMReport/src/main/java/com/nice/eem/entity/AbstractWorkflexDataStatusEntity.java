@@ -13,52 +13,51 @@ import javax.persistence.SqlResultSetMapping;
 
 import com.nice.eem.constants.EemConstants;
 import com.nice.eem.dto.SummaryReportDto;
+
 /**
  * 
  * @author ajit.p
  *
  */
-@SqlResultSetMapping(name=EemConstants.SUMMARY_REPORT_MAPPING,
-classes = {
- @ConstructorResult(targetClass = SummaryReportDto.class,
-		 columns = {@ColumnResult(name="totalAgent", type = Long.class),
-	 @ColumnResult(name="totalAgentParticipating",type = Long.class),
-	 @ColumnResult(name="currentDayActiveAgent",type = Long.class),
-	 @ColumnResult(name="ssActiveAgents",type = Long.class),
-	 @ColumnResult(name="scheduleHr",type = Double.class),
-	 @ColumnResult(name="extraHrReqAutoApproved",type = Long.class),
-	 @ColumnResult(name="extraHrHourAutoApproved",type = Double.class),
-	 @ColumnResult(name="extraHrReqApproved",type = Long.class),
-	 @ColumnResult(name="extraHrHoursApproved",type = Double.class),
-	 @ColumnResult(name="extraHrReqDeclined",type = Long.class),
-	 @ColumnResult(name="extraHrHoursDeclined",type = Double.class),
-	 @ColumnResult(name="extraHrReqRtcWaiting",type = Long.class),
-	 @ColumnResult(name="extraHrHoursRtcWaiting",type = Double.class),
-	 @ColumnResult(name="vtoReqAutoApproved",type = Long.class),
-	 @ColumnResult(name="vtoHourAutoApproved",type = Double.class),
-	 @ColumnResult(name="vtoReqApproved",type = Long.class),
-	 @ColumnResult(name="vtoHoursApproved",type = Double.class),
-	 @ColumnResult(name="vtoReqDeclined",type = Long.class),
-	 @ColumnResult(name="vtoHoursDeclined",type = Double.class),
-	 @ColumnResult(name="vtoReqRtcWaiting",type = Long.class),
-	 @ColumnResult(name="vtoHoursRtcWaiting",type = Double.class),
-	 @ColumnResult(name="ttlSwap",type = Long.class),
-	 @ColumnResult(name="ttlSwapHr",type = Double.class),
-	 @ColumnResult(name="tradeReq",type = Long.class),
-	 @ColumnResult(name="ttlTradeAccepted",type = Long.class),
-	 @ColumnResult(name="ttlTradeHr",type = Double.class),
-	 @ColumnResult(name="extraHrRulerCmdAgent",type = Double.class),
-	 @ColumnResult(name="extraHrRtcApproved",type = Double.class),
-	 @ColumnResult(name="extraHrAgtAccepted",type = Double.class),
-	 @ColumnResult(name="extraHrAgtDecliend",type = Double.class),
-	 @ColumnResult(name="extraHrAgtNores",type = Double.class),
-	 @ColumnResult(name="vtoHourRulerCmdAgent",type = Double.class),
-	 @ColumnResult(name="vtoHourRtcApproved",type = Double.class),
-	 @ColumnResult(name="vtoHourAgtAccepted",type = Double.class),
-	 @ColumnResult(name="vtoHourAgtDecliend",type = Double.class),
-	 @ColumnResult(name="vtoHourAgtNores",type = Double.class)}
- )}
-)
+@SqlResultSetMapping(name = EemConstants.SUMMARY_REPORT_MAPPING, classes = {
+		@ConstructorResult(targetClass = SummaryReportDto.class, columns = {
+				@ColumnResult(name = "ctzDateTime", type = Date.class),
+				@ColumnResult(name = "totalAgent", type = Long.class),
+				@ColumnResult(name = "totalAgentParticipating", type = Long.class),
+				@ColumnResult(name = "currentDayActiveAgent", type = Long.class),
+				@ColumnResult(name = "ssActiveAgents", type = Long.class),
+				@ColumnResult(name = "scheduleHr", type = Double.class),
+				@ColumnResult(name = "extraHrReqAutoApproved", type = Long.class),
+				@ColumnResult(name = "extraHrHourAutoApproved", type = Double.class),
+				@ColumnResult(name = "extraHrReqApproved", type = Long.class),
+				@ColumnResult(name = "extraHrHoursApproved", type = Double.class),
+				@ColumnResult(name = "extraHrReqDeclined", type = Long.class),
+				@ColumnResult(name = "extraHrHoursDeclined", type = Double.class),
+				@ColumnResult(name = "extraHrReqRtcWaiting", type = Long.class),
+				@ColumnResult(name = "extraHrHoursRtcWaiting", type = Double.class),
+				@ColumnResult(name = "vtoReqAutoApproved", type = Long.class),
+				@ColumnResult(name = "vtoHourAutoApproved", type = Double.class),
+				@ColumnResult(name = "vtoReqApproved", type = Long.class),
+				@ColumnResult(name = "vtoHoursApproved", type = Double.class),
+				@ColumnResult(name = "vtoReqDeclined", type = Long.class),
+				@ColumnResult(name = "vtoHoursDeclined", type = Double.class),
+				@ColumnResult(name = "vtoReqRtcWaiting", type = Long.class),
+				@ColumnResult(name = "vtoHoursRtcWaiting", type = Double.class),
+				@ColumnResult(name = "ttlSwap", type = Long.class),
+				@ColumnResult(name = "ttlSwapHr", type = Double.class),
+				@ColumnResult(name = "tradeReq", type = Long.class),
+				@ColumnResult(name = "ttlTradeAccepted", type = Long.class),
+				@ColumnResult(name = "ttlTradeHr", type = Double.class),
+				@ColumnResult(name = "extraHrRulerCmdAgent", type = Double.class),
+				@ColumnResult(name = "extraHrRtcApproved", type = Double.class),
+				@ColumnResult(name = "extraHrAgtAccepted", type = Double.class),
+				@ColumnResult(name = "extraHrAgtDecliend", type = Double.class),
+				@ColumnResult(name = "extraHrAgtNores", type = Double.class),
+				@ColumnResult(name = "vtoHourRulerCmdAgent", type = Double.class),
+				@ColumnResult(name = "vtoHourRtcApproved", type = Double.class),
+				@ColumnResult(name = "vtoHourAgtAccepted", type = Double.class),
+				@ColumnResult(name = "vtoHourAgtDecliend", type = Double.class),
+				@ColumnResult(name = "vtoHourAgtNores", type = Double.class) }) })
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class AbstractWorkflexDataStatusEntity {
@@ -185,7 +184,7 @@ public abstract class AbstractWorkflexDataStatusEntity {
 	private Date aux8;
 	@Column(name = "aux9")
 	private Date aux9;
-	
+
 	@Column(name = "programid")
 	private long programId;
 	@Column(name = "programname")
@@ -196,15 +195,16 @@ public abstract class AbstractWorkflexDataStatusEntity {
 	private Date ctzDateTime;
 	@Column(name = "timezone")
 	private String timeZone;
+
 	public AbstractWorkflexDataStatusEntity() {
 		super();
 	}
+
 	public AbstractWorkflexDataStatusEntity(long id) {
 		super();
 		this.id = id;
 	}
-	
-	
+
 	public AbstractWorkflexDataStatusEntity(long id, long ssActiveAgents, long ssActiveLastThirtyDays,
 			long ssActiveLastSevenDays, long totalAgent, long totalAgentParticipating, long mtdActiveAgent,
 			long wtdActiveAgent, long currentDayActiveAgent, long activeLastThirtyDays, long activeLastSevenDays,
@@ -286,390 +286,519 @@ public abstract class AbstractWorkflexDataStatusEntity {
 		this.ctzDateTime = ctzDateTime;
 		this.timeZone = timeZone;
 	}
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 	public long getSsactiveagents() {
 		return ssActiveAgents;
 	}
+
 	public void setSsactiveagents(long ssactiveagents) {
 		this.ssActiveAgents = ssactiveagents;
 	}
+
 	public long getSsactivelastthirtydays() {
 		return ssActiveLastThirtyDays;
 	}
+
 	public void setSsactivelastthirtydays(long ssactivelastthirtydays) {
 		this.ssActiveLastThirtyDays = ssactivelastthirtydays;
 	}
+
 	public long getSsactivelastsevendays() {
 		return ssActiveLastSevenDays;
 	}
+
 	public void setSsactivelastsevendays(long ssactivelastsevendays) {
 		this.ssActiveLastSevenDays = ssactivelastsevendays;
 	}
+
 	public long getTotalagent() {
 		return totalAgent;
 	}
+
 	public void setTotalagent(long totalagent) {
 		this.totalAgent = totalagent;
 	}
+
 	public long getTotalagentparticipating() {
 		return totalAgentParticipating;
 	}
+
 	public void setTotalagentparticipating(long totalagentparticipating) {
 		this.totalAgentParticipating = totalagentparticipating;
 	}
+
 	public long getMtdactiveagent() {
 		return mtdActiveAgent;
 	}
+
 	public void setMtdactiveagent(long mtdactiveagent) {
 		this.mtdActiveAgent = mtdactiveagent;
 	}
+
 	public long getWtdactiveagent() {
 		return wtdActiveAgent;
 	}
+
 	public void setWtdactiveagent(long wtdactiveagent) {
 		this.wtdActiveAgent = wtdactiveagent;
 	}
+
 	public long getCurrentdayactivegent() {
 		return currentDayActiveAgent;
 	}
+
 	public void setCurrentdayactivegent(long currentdayactivegent) {
 		this.currentDayActiveAgent = currentdayactivegent;
 	}
+
 	public long getActivelastthirtydays() {
 		return activeLastThirtyDays;
 	}
+
 	public void setActivelastthirtydays(long activelastthirtydays) {
 		this.activeLastThirtyDays = activelastthirtydays;
 	}
+
 	public long getActivelastsevendays() {
 		return activeLastSevenDays;
 	}
+
 	public void setActivelastsevendays(long activelastsevendays) {
 		this.activeLastSevenDays = activelastsevendays;
 	}
+
 	public long getExtrahrreqapproved() {
 		return extraHrReqApproved;
 	}
+
 	public void setExtrahrreqapproved(long extrahrreqapproved) {
 		this.extraHrReqApproved = extrahrreqapproved;
 	}
+
 	public long getExtrahrreqdeclined() {
 		return extraHrReqDeclined;
 	}
+
 	public void setExtrahrreqdeclined(long extrahrreqdeclined) {
 		this.extraHrReqDeclined = extrahrreqdeclined;
 	}
+
 	public long getExtrahrreqrtcwaiting() {
 		return extraHrReqRtcWaiting;
 	}
+
 	public void setExtrahrreqrtcwaiting(long extrahrreqrtcwaiting) {
 		this.extraHrReqRtcWaiting = extrahrreqrtcwaiting;
 	}
+
 	public long getExtrahrreqautoapproved() {
 		return extraHrReqAutoApproved;
 	}
+
 	public void setExtrahrreqautoapproved(long extrahrreqautoapproved) {
 		this.extraHrReqAutoApproved = extrahrreqautoapproved;
 	}
+
 	public double getExtrahrhoursapproved() {
 		return extraHrHoursApproved;
 	}
+
 	public void setExtrahrhoursapproved(double extrahrhoursapproved) {
 		this.extraHrHoursApproved = extrahrhoursapproved;
 	}
+
 	public double getExtrahrhoursdeclined() {
 		return extraHrHoursDeclined;
 	}
+
 	public void setExtrahrhoursdeclined(double extrahrhoursdeclined) {
 		this.extraHrHoursDeclined = extrahrhoursdeclined;
 	}
+
 	public double getExtrahrhoursrtcwaiting() {
 		return extraHrHoursRtcWaiting;
 	}
+
 	public void setExtrahrhoursrtcwaiting(double extrahrhoursrtcwaiting) {
 		this.extraHrHoursRtcWaiting = extrahrhoursrtcwaiting;
 	}
+
 	public double getExtrahrhourautoapproved() {
 		return extraHrHourAutoApproved;
 	}
+
 	public void setExtrahrhourautoapproved(double extrahrhourautoapproved) {
 		this.extraHrHourAutoApproved = extrahrhourautoapproved;
 	}
+
 	public double getExtrahrrulercmdagent() {
 		return extraHrRulerCmdAgent;
 	}
+
 	public void setExtrahrrulercmdagent(double extrahrrulercmdagent) {
 		this.extraHrRulerCmdAgent = extrahrrulercmdagent;
 	}
+
 	public double getExtrahrrtcapproved() {
 		return extraHrRtcApproved;
 	}
+
 	public void setExtrahrrtcapproved(double extrahrrtcapproved) {
 		this.extraHrRtcApproved = extrahrrtcapproved;
 	}
+
 	public double getExtrahragtaccepted() {
 		return extraHrAgtAccepted;
 	}
+
 	public void setExtrahragtaccepted(double extrahragtaccepted) {
 		this.extraHrAgtAccepted = extrahragtaccepted;
 	}
+
 	public double getExtrahragtdecliend() {
 		return extraHrAgtDecliend;
 	}
+
 	public void setExtrahragtdecliend(double extrahragtdecliend) {
 		this.extraHrAgtDecliend = extrahragtdecliend;
 	}
+
 	public double getExtrahragtnores() {
 		return extraHrAgtNores;
 	}
+
 	public void setExtrahragtnores(double extrahragtnores) {
 		this.extraHrAgtNores = extrahragtnores;
 	}
+
 	public long getVtoreqapproved() {
 		return vtoReqApproved;
 	}
+
 	public void setVtoreqapproved(long vtoreqapproved) {
 		this.vtoReqApproved = vtoreqapproved;
 	}
+
 	public long getVtoreqdeclined() {
 		return vtoReqDeclined;
 	}
+
 	public void setVtoreqdeclined(long vtoreqdeclined) {
 		this.vtoReqDeclined = vtoreqdeclined;
 	}
+
 	public long getVtoreqrtcwaiting() {
 		return vtoReqRtcWaiting;
 	}
+
 	public void setVtoreqrtcwaiting(long vtoreqrtcwaiting) {
 		this.vtoReqRtcWaiting = vtoreqrtcwaiting;
 	}
+
 	public long getVtoreqautoapproved() {
 		return vtoReqAutoApproved;
 	}
+
 	public void setVtoreqautoapproved(long vtoreqautoapproved) {
 		this.vtoReqAutoApproved = vtoreqautoapproved;
 	}
+
 	public double getVtohoursapproved() {
 		return vtoHoursApproved;
 	}
+
 	public void setVtohoursapproved(double vtohoursapproved) {
 		this.vtoHoursApproved = vtohoursapproved;
 	}
+
 	public double getVtohoursdeclined() {
 		return vtoHoursDeclined;
 	}
+
 	public void setVtohoursdeclined(double vtohoursdeclined) {
 		this.vtoHoursDeclined = vtohoursdeclined;
 	}
+
 	public double getVtohoursrtcwaiting() {
 		return vtoHoursRtcWaiting;
 	}
+
 	public void setVtohoursrtcwaiting(double vtohoursrtcwaiting) {
 		this.vtoHoursRtcWaiting = vtohoursrtcwaiting;
 	}
+
 	public double getVtohourautoapproved() {
 		return vtoHourAutoApproved;
 	}
+
 	public void setVtohourautoapproved(double vtohourautoapproved) {
 		this.vtoHourAutoApproved = vtohourautoapproved;
 	}
+
 	public double getVtohourrulercmdagent() {
 		return vtoHourRulerCmdAgent;
 	}
+
 	public void setVtohourrulercmdagent(double vtohourrulercmdagent) {
 		this.vtoHourRulerCmdAgent = vtohourrulercmdagent;
 	}
+
 	public double getVtohourrtcapproved() {
 		return vtoHourRtcApproved;
 	}
+
 	public void setVtohourrtcapproved(double vtohourrtcapproved) {
 		this.vtoHourRtcApproved = vtohourrtcapproved;
 	}
+
 	public double getVtohouragtaccepted() {
 		return vtoHourAgtAccepted;
 	}
+
 	public void setVtohouragtaccepted(double vtohouragtaccepted) {
 		this.vtoHourAgtAccepted = vtohouragtaccepted;
 	}
+
 	public double getVtohouragtdecliend() {
 		return vtoHourAgtDecliend;
 	}
+
 	public void setVtohouragtdecliend(double vtohouragtdecliend) {
 		this.vtoHourAgtDecliend = vtohouragtdecliend;
 	}
+
 	public double getVtohouragtnores() {
 		return vtoHourAgtNores;
 	}
+
 	public void setVtohouragtnores(double vtohouragtnores) {
 		this.vtoHourAgtNores = vtohouragtnores;
 	}
+
 	public long getPtoreqapproved() {
 		return ptoReqApproved;
 	}
+
 	public void setPtoreqapproved(long ptoreqapproved) {
 		this.ptoReqApproved = ptoreqapproved;
 	}
+
 	public long getPtoreqdeclined() {
 		return ptoReqDeclined;
 	}
+
 	public void setPtoreqdeclined(long ptoreqdeclined) {
 		this.ptoReqDeclined = ptoreqdeclined;
 	}
+
 	public long getPtoreqautoapproved() {
 		return ptoReqAutoApproved;
 	}
+
 	public void setPtoreqautoapproved(long ptoreqautoapproved) {
 		this.ptoReqAutoApproved = ptoreqautoapproved;
 	}
+
 	public double getPtohoursapproved() {
 		return ptoHoursApproved;
 	}
+
 	public void setPtohoursapproved(double ptohoursapproved) {
 		this.ptoHoursApproved = ptohoursapproved;
 	}
+
 	public double getPtohourautoapproved() {
 		return ptoHourAutoApproved;
 	}
+
 	public void setPtohourautoapproved(double ptohourautoapproved) {
 		this.ptoHourAutoApproved = ptohourautoapproved;
 	}
+
 	public double getPtohoursdeclined() {
 		return ptoHoursDeclined;
 	}
+
 	public void setPtohoursdeclined(double ptohoursdeclined) {
 		this.ptoHoursDeclined = ptohoursdeclined;
 	}
+
 	public long getTtlswap() {
 		return ttlSwap;
 	}
+
 	public void setTtlswap(long ttlswap) {
 		this.ttlSwap = ttlswap;
 	}
+
 	public double getTtlswaphr() {
 		return ttlSwapHr;
 	}
+
 	public void setTtlswaphr(double ttlswaphr) {
 		this.ttlSwapHr = ttlswaphr;
 	}
+
 	public long getTradereq() {
 		return tradeReq;
 	}
+
 	public void setTradereq(long tradereq) {
 		this.tradeReq = tradereq;
 	}
+
 	public long getTtltrade_accepted() {
 		return ttlTradeAccepted;
 	}
+
 	public void setTtltrade_accepted(long ttltrade_accepted) {
 		this.ttlTradeAccepted = ttltrade_accepted;
 	}
+
 	public double getTtltradehr() {
 		return ttlTradeHr;
 	}
+
 	public void setTtltradehr(double ttltradehr) {
 		this.ttlTradeHr = ttltradehr;
 	}
+
 	public double getSchedulehr() {
 		return scheduleHr;
 	}
+
 	public void setSchedulehr(double schedulehr) {
 		this.scheduleHr = schedulehr;
 	}
+
 	public long getAhtalert() {
 		return ahtAlert;
 	}
+
 	public void setAhtalert(long ahtalert) {
 		this.ahtAlert = ahtalert;
 	}
+
 	public Date getAux1() {
 		return aux1;
 	}
+
 	public void setAux1(Date aux1) {
 		this.aux1 = aux1;
 	}
+
 	public Date getAux2() {
 		return aux2;
 	}
+
 	public void setAux2(Date aux2) {
 		this.aux2 = aux2;
 	}
+
 	public Date getAux3() {
 		return aux3;
 	}
+
 	public void setAux3(Date aux3) {
 		this.aux3 = aux3;
 	}
+
 	public Date getAux4() {
 		return aux4;
 	}
+
 	public void setAux4(Date aux4) {
 		this.aux4 = aux4;
 	}
+
 	public Date getAux5() {
 		return aux5;
 	}
+
 	public void setAux5(Date aux5) {
 		this.aux5 = aux5;
 	}
+
 	public Date getAux6() {
 		return aux6;
 	}
+
 	public void setAux6(Date aux6) {
 		this.aux6 = aux6;
 	}
+
 	public Date getAux7() {
 		return aux7;
 	}
+
 	public void setAux7(Date aux7) {
 		this.aux7 = aux7;
 	}
+
 	public Date getAux8() {
 		return aux8;
 	}
+
 	public void setAux8(Date aux8) {
 		this.aux8 = aux8;
 	}
+
 	public Date getAux9() {
 		return aux9;
 	}
+
 	public void setAux9(Date aux9) {
 		this.aux9 = aux9;
 	}
+
 	public long getProgramid() {
 		return programId;
 	}
+
 	public void setProgramid(long programid) {
 		this.programId = programid;
 	}
+
 	public String getProgramname() {
 		return programName;
 	}
+
 	public void setProgramname(String programname) {
 		this.programName = programname;
 	}
+
 	public Date getReportdate() {
 		return reportDate;
 	}
+
 	public void setReportdate(Date reportdate) {
 		this.reportDate = reportdate;
 	}
+
 	public Date getCtzdatetime() {
 		return ctzDateTime;
 	}
+
 	public void setCtzdatetime(Date ctzdatetime) {
 		this.ctzDateTime = ctzdatetime;
 	}
+
 	public String getTimezone() {
 		return timeZone;
 	}
+
 	public void setTimezone(String timezone) {
 		this.timeZone = timezone;
 	}
+
 	@Override
 	public String toString() {
 		return "CommonDataEntity [id=" + id + ", ssactiveagents=" + ssActiveAgents + ", ssactivelastthirtydays="
@@ -701,5 +830,4 @@ public abstract class AbstractWorkflexDataStatusEntity {
 				+ reportDate + ", ctzdatetime=" + ctzDateTime + ", timezone=" + timeZone + "]";
 	}
 
-	
 }

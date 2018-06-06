@@ -29,18 +29,20 @@ public class EemCommonDaoImpl implements EemCommonDao {
 
 	@Override
 	public List<ProgramWiseDataDto> getProgramWiseData(String customerName, Date ctzDate) {
-		TypedQuery<ProgramWiseDataDto> query = entityManager.createQuery(eemProperties.getProgramDataQuery(), ProgramWiseDataDto.class);
-		query.setParameter("entityName", customerName);
+		String programDataQuery = eemProperties.getProgramDataQuery();
+		Query query = entityManager.createNativeQuery(eemProperties.setQueryValues(programDataQuery, customerName), EemConstants.PROGRAM_DATA_MAPPING);
 		query.setParameter("ctzDate", ctzDate);
-		return query.getResultList();
+		List<ProgramWiseDataDto> programData = query.getResultList();
+		return programData;
 	}
 
 	@Override
 	public List<SiteWiseDataDto> getSiteWiseData(String customerName, Date ctzDate) {
-		TypedQuery<SiteWiseDataDto> query = entityManager.createQuery(eemProperties.getSiteDataQuery(), SiteWiseDataDto.class);
-		query.setParameter(1, customerName);
-
-		return query.getResultList();
+		String siteDataQuery = eemProperties.getSiteDataQuery();
+		Query query = entityManager.createNativeQuery(eemProperties.setQueryValues(siteDataQuery, customerName), EemConstants.SITE_DATA_MAPPING);
+		query.setParameter("ctzDate", ctzDate);
+		List<SiteWiseDataDto> siteData = query.getResultList();
+		return siteData;
 	}
 
 	@Override
@@ -54,3 +56,14 @@ public class EemCommonDaoImpl implements EemCommonDao {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+

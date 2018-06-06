@@ -27,8 +27,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.scheduling.annotation.Scheduled;
 
-import com.nice.eem.excelutil.ConcentrixFinalReport;
 import com.nice.eem.mail.batch.model.Customer;
+import com.nice.eem.service.ReportScheduleConfService;
 
 /**
  * 
@@ -41,7 +41,6 @@ import com.nice.eem.mail.batch.model.Customer;
 @Import({ BatchScheduler.class })
 public class BatchConfiguration {
 	
-
 	@Autowired
 	private JobBuilderFactory jobBuilderFactory;
 
@@ -50,6 +49,9 @@ public class BatchConfiguration {
 
 	@Autowired
 	private SimpleJobLauncher jobLauncher;
+
+    @Autowired
+	private ReportScheduleConfService reportSchedule;
 
 	@Value("${spring.mail.username}")
 	private String sender;
@@ -63,8 +65,25 @@ public class BatchConfiguration {
 	@Value("${codeurjc.batch.notifications.email}")
 	private String email;
 
+        String cronScheduledaly=null;
+        String cronScheduleweekly=null;
 	// tag::readerwriterprocessor[]
 	//@Bean
+        
+       /* BatchConfiguration(){
+            try{
+           List<ReportSchedule> schedulelist = reportSchedule.showReportConfiguration();
+           if(schedulelist != null){
+           schedulelist.forEach((schedule) -> {
+               if(schedule.getReport_type().equalsIgnoreCase("daily")) 
+                   cronScheduledaly = "0 "+schedule.getScheduled_time().replace(':', ' ')+" * * ?";
+               else
+                   cronScheduleweekly = schedule.getScheduled_time();
+            });
+           }}catch(Exception e){
+               e.printStackTrace();
+           }
+        }*/
 	public FlatFileItemReader<Customer> reader() {
 		FlatFileItemReader<Customer> reader = new FlatFileItemReader<Customer>();
 		reader.setResource(new FileSystemResource(data));
@@ -100,7 +119,7 @@ public class BatchConfiguration {
 	 * @Scheduled(cron = "0/20 * * * * ?")
 	 */
 
-	@Scheduled(cron = "0/2 * * * * ?")
+	@Scheduled(cron = "0 0 12 * * ?")
 	public void perform() throws Exception {
 
 		System.out.println("Job Started at :" + new Date());
@@ -140,7 +159,6 @@ public class BatchConfiguration {
 	}
 
 	// end::listener[]
-
 	// tag::jobstep[]
 	@Bean
 	public Job importUserJob() {

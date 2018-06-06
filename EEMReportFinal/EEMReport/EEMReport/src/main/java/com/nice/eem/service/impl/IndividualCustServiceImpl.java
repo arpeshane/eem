@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.nice.eem.service.impl;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -26,82 +25,96 @@ import com.nice.eem.util.PropertyLoader;
  * @author pooja.v
  */
 @Service
-public class IndividualCustServiceImpl implements IndividualCustService {
-	@Autowired
-	private IndiCustomerDao indCustDao;
+public class IndividualCustServiceImpl implements IndividualCustService{
+     @Autowired
+    IndiCustomerDao indCustDao;
+    @Override
+     public EemIndividualCustomer update(EemIndividualCustomer cust){
+         EemIndividualCustomer customer = indCustDao.getOne(cust.getCustomerId());
+         customer.setCustName(cust.getCustName());
+         customer.setCustMailId(cust.getCustMailId());
+         customer.setWeekStartDay(cust.getWeekStartDay());
+         customer.setWeekEndDay(cust.getWeekEndDay());
+         customer.setCustStatus(cust.getCustStatus());
+         customer.setEmailReportTo(cust.getEmailReportTo());
+         customer.setEmailAlertsTo(cust.getEmailAlertsTo());
+         customer.setCreatedDate(new Date());
+         customer.setCustDeactivationDate(new Date());
+         customer.setDailyScheduledTime(new Date());
+         return indCustDao.save(customer);
+         
+     }
 
-	@Override
-	public EemIndividualCustomer update(EemIndividualCustomer cust) {
-		EemIndividualCustomer customer = indCustDao.getOne(cust.getCustomerId());
-		customer.setCustName(cust.getCustName());
-		customer.setCustMailId(cust.getCustMailId());
-		customer.setWeekStartDay(cust.getWeekStartDay());
-		customer.setWeekEndDay(cust.getWeekEndDay());
-		customer.setCustStatus(cust.getCustStatus());
-		customer.setEmailReportTo(cust.getEmailReportTo());
-		customer.setEmailAlertsTo(cust.getEmailAlertsTo());
-		customer.setCreatedDate(new Date());
-		customer.setCustDeactivationDate(new Date());
-		customer.setDailyScheduledTime(new Date());
-		return indCustDao.save(customer);
+    @Override
+    public EemIndividualCustomer createCustomer(EemIndividualCustomer cust) {
+        cust.setCreatedDate(new Date());
+        cust.setCustDeactivationDate(new Date());
+        cust.setDailyScheduledTime(new Date());
+        return indCustDao.save(cust);
+    }
 
-	}
+    @Override
+    public List getCustomers() {
+      return indCustDao.findAll();
+    }
 
-	@Override
-	public EemIndividualCustomer createCustomer(EemIndividualCustomer cust) {
-		cust.setCreatedDate(new Date());
-		cust.setCustDeactivationDate(new Date());
-		cust.setDailyScheduledTime(new Date());
-		return indCustDao.save(cust);
-	}
+    @Override
+    public List<Map<String, String[]>> getCustomerEmail(Long custid) {
+    	
+        EemIndividualCustomer customer = indCustDao.getOne(custid);
+        List<Map<String, String[]>> emailList = new ArrayList<Map<String, String[]>>();
+        Map<String, String[]> emailMap = new HashMap<String, String[]>();
+        try {
+            if (customer != null) {
+                // Get customers email for sending reports
+                String emails = customer.getEmailReportTo();
+                // Get customers email for sending alerts or logs
+                String alerts = customer.getEmailAlertsTo();
 
-	@Override
-	public List getCustomers() {
-		return indCustDao.findAll();
-	}
+                emailMap.put("reportmail", emails.split(","));
+                emailMap.put("alertmail", alerts.split(","));
+            }
+            emailList.add(emailMap);
+            return emailList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-	@Override
-	public List<Map<String, String[]>> getCustomerEmail(Long custid) {
+    @Override
+    public List getCustomerName() {
+        Properties pts = PropertyLoader.loadProperties("eem.properties");
+        List<String> customerList = new ArrayList<String>();
+        List<String> existingcustomerList = new ArrayList<>();
+        List<EemIndividualCustomer> existingcust = indCustDao.findAll();
+        try {
+            String custname = pts.getProperty("customer.names");
+            if (custname != null) {
+                customerList.addAll(Arrays.asList(custname.split(",")));
+             existingcust.forEach((existcust) -> {
+                    existingcustomerList.add(existcust.getCustName());
+                });
+                customerList.removeAll(existingcustomerList);
+                if(!customerList.isEmpty())
+                     return customerList;
+                else
+                    return null;
+            }
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
-		EemIndividualCustomer customer = indCustDao.getOne(custid);
-		List<Map<String, String[]>> emailList = new ArrayList<Map<String, String[]>>();
-		Map<String, String[]> emailMap = new HashMap<String, String[]>();
-		try {
-			if (customer != null) {
-				// Get customers email for sending reports
-				String emails = customer.getEmailReportTo();
-				// Get customers email for sending alerts or logs
-				String alerts = customer.getEmailAlertsTo();
 
-				emailMap.put("reportmail", emails.split(","));
-				emailMap.put("alertmail", alerts.split(","));
-			}
-			emailList.add(emailMap);
-			return emailList;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	@Override
-	public List getCustomerName() {
-		Properties pts = PropertyLoader.loadProperties("eem.properties");
-		List<String> customerList = new ArrayList<String>();
-		try {
-			String custname = pts.getProperty("customer");
-			if (custname != null) {
-				customerList.addAll(Arrays.asList(custname.split(",")));
-
-			}
-			return customerList;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
-	@Override
+    @Override
+    public String getCustomerStartDay(String custName){
+         return indCustDao.getCustomerWiseWeekStartDay(custName);
+    }
+    
+    @Override
 	public EemIndividualCustomer findByCustName(String custName) {
 
 		EemIndividualCustomer eemIndividualCustomer = indCustDao.findEemIndividualCustomerByCustName(custName);
@@ -109,4 +122,9 @@ public class IndividualCustServiceImpl implements IndividualCustService {
 		return eemIndividualCustomer;
 	}
 
+       
+ @Override
+    public List<EemIndividualCustomer> getActiveCustomers() {
+      return indCustDao.getActiveCustomerList();
+    }
 }

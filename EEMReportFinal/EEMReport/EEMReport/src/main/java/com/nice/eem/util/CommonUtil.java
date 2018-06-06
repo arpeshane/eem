@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.Tuple;
 
 import com.nice.eem.dto.SummaryReportDto;
+import java.util.Calendar;
 
 /**
  * 
@@ -29,37 +30,65 @@ public class CommonUtil {
 
 	}
 
-	public static List<SummaryReportDto> map(List<Tuple> tuples) {
-		List<SummaryReportDto> summaryReport = new ArrayList<SummaryReportDto>();
-		for (Tuple tuple : tuples) {
-			summaryReport.add(map(tuple));
-		}
-		return summaryReport;
+/**
+ * 
+ * @param date
+ * @return
+ */
+	public static String convertDateToReportDate(Date date) {
+		DateFormat dateFormat = new SimpleDateFormat("dd/MMM");
+		String reportDate = dateFormat.format(date);
+		return reportDate;
+
+	}
+/**
+ * 
+ * @param date
+ * @return
+ */
+	public static String convertDateToReportDay(Date date) {
+		DateFormat dateFormat = new SimpleDateFormat("E");
+		String reportDay = dateFormat.format(date);
+		return reportDay;
+
 	}
 
-	public static SummaryReportDto map(Tuple tuple) {
-		SummaryReportDto  summaryReportDto = new SummaryReportDto((Long)tuple.get("totalAgent"), (Long)tuple.get("totalAgentParticipating"),(Long) tuple.get("currentDayActiveAgent"),(Long) tuple.get("ssActiveAgents"), (Double)tuple.get("scheduleHr"), 
-				(Long)tuple.get("extraHrReqAutoApproved"),(Double)tuple.get("extraHrHourAutoApproved") ,(Long)tuple.get("extraHrReqApproved") ,(Double)tuple.get("extraHrHoursApproved") ,(Long) tuple.get("extraHrReqDeclined"),(Double) tuple.get("extraHrHoursDeclined"), 
-				(Long)tuple.get("extraHrReqRtcWaiting"),(Double) tuple.get("extraHrHoursRtcWaiting"), (Long)tuple.get("vtoReqAutoApproved"),(Double)tuple.get("vtoHourAutoApproved") , (Long)tuple.get("vtoReqApproved"),(Double)tuple.get("vtoHoursApproved") ,(Long)tuple.get("vtoReqDeclined") , 
-				(Double)tuple.get("vtoHoursDeclined"), (Long)tuple.get("vtoReqRtcWaiting"), (Double)tuple.get("vtoHoursRtcWaiting"),(Long)tuple.get("ttlSwap") ,(Double)tuple.get("ttlSwapHr") , (Long)tuple.get("tradeReq"),(Long)tuple.get("ttlTradeAccepted") ,(Double) tuple.get("ttlTradeHr"), (Double)tuple.get("extraHrRulerCmdAgent"), 
-				(Double)tuple.get("extraHrRtcApproved"),(Double)tuple.get("extraHrAgtAccepted") ,(Double)tuple.get("extraHrAgtDecliend") ,(Double) tuple.get("extraHrAgtNores"),(Double)tuple.get("vtoHourRulerCmdAgent") ,(Double)tuple.get("vtoHourRtcApproved") ,(Double)tuple.get("vtoHourAgtAccepted") , 
-				(Double)tuple.get("vtoHourAgtDecliend"),(Double)tuple.get("vtoHourAgtNores"));
-		return summaryReportDto;
+	public static String getDateByWeekDay(String day) {
+		int weekday = 0;
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			switch (day) {
+			case "Sunday":
+				weekday = 1;
+				break;
+			case "Monday":
+				weekday = 2;
+				break;
+			case "Tuesday":
+				weekday = 3;
+				break;
+			case "Wednesday":
+				weekday = 4;
+				break;
+			case "Thursday":
+				weekday = 5;
+				break;
+			case "Friday":
+				weekday = 6;
+				break;
+			case "Saturday":
+				weekday = 7;
+				break;
+			}
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(new Date());
+			cal.set(Calendar.WEEK_OF_MONTH, cal.get(Calendar.WEEK_OF_MONTH));
+			cal.set(Calendar.DAY_OF_WEEK, weekday);
+//			cal.add(Calendar.DAY_OF_YEAR, -1);
+			return dateFormat.format(cal.getTime());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

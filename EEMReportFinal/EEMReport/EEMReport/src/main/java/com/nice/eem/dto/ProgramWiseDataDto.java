@@ -10,19 +10,19 @@ import java.util.Date;
  * @author ajit.p
  *
  */
-public class ProgramWiseDataDto extends BaseCustomerDto{
+public class ProgramWiseDataDto{
 	
 	private static final long serialVersionUID = 1L;
 	
 	private long id;
-	private int ssActiveAgents;
-	private int totalAgent;
-	private int totalAgentParticipating;
-	private int currentDayActiveAgent;
-	private int extraHrReqApproved;
-	private int extraHrReqDeclined;
-	private int extraHrReqRtcWaiting;
-	private int extraHrReqAutoApproved;
+	private long ssActiveAgents;
+	private long totalAgent;
+	private long totalAgentParticipating;
+	private long currentDayActiveAgent;
+	private long extraHrReqApproved;
+	private long extraHrReqDeclined;
+	private long extraHrReqRtcWaiting;
+	private long extraHrReqAutoApproved;
 	private double extraHrHoursApproved;
 	private double extraHrHoursDeclined;
 	private double extraHrHoursRtcWaiting;
@@ -32,10 +32,10 @@ public class ProgramWiseDataDto extends BaseCustomerDto{
 	private double extraHrAgtAccepted;
 	private double extraHrAgtDecliend;
 	private double extraHrAgtNores;
-	private int vtoReqApproved;
-	private int vtoReqDeclined;
-	private int vtoReqRtcWaiting;
-	private int vtoReqAutoApproved;
+	private long vtoReqApproved;
+	private long vtoReqDeclined;
+	private long vtoReqRtcWaiting;
+	private long vtoReqAutoApproved;
 	private double vtoHoursApproved;
 	private double vtoHoursDeclined;
 	private double vtoHoursRtcWaiting;
@@ -45,10 +45,10 @@ public class ProgramWiseDataDto extends BaseCustomerDto{
 	private double vtoHourAgtAccepted;
 	private double vtoHourAgtDecliend;
 	private double vtoHourAgtNores;
-	private int ttlSwap;
+	private long ttlSwap;
 	private double ttlSwapHr;
-	private int tradeReq;
-	private int ttlTradeAccepted;
+	private long tradeReq;
+	private long ttlTradeAccepted;
 	private double ttlTradeHr;
 	private double scheduleHr;
 	private String programName;
@@ -60,65 +60,64 @@ public class ProgramWiseDataDto extends BaseCustomerDto{
 	}
 
 
-
-	public ProgramWiseDataDto(long id,String programname, Date ctzdatetime,
-			int ssactiveagents, int totalagent, int totalagentparticipating,
-			int extrahrreqapproved, int extrahrreqdeclined,
-			int extrahrreqautoapproved, double extrahrhoursapproved,
-			double extrahrhoursdeclined, double extrahrhourautoapproved,
-			double extrahrrulercmdagent, double extrahrrtcapproved,
-			double extrahragtaccepted, double extrahragtdecliend,
-			double extrahragtnores, int vtoreqapproved, int vtoreqdeclined,
-			int vtoreqautoapproved, double vtohoursapproved,
-			double vtohoursdeclined, double vtohourautoapproved,
-			double vtohourrulercmdagent, double vtohourrtcapproved,
-			double vtohouragtaccepted, double vtohouragtdecliend,
-			double vtohouragtnores, int ttlswap, double ttlswaphr,
-			int tradereq, int ttltrade_accepted, double ttltradehr,
-			double schedulehr, int currentdayactivegent,
-			int extrahrreqrtcwaiting, double extrahrhoursrtcwaiting,
-			int vtoreqrtcwaiting, double vtohoursrtcwaiting){
+	public ProgramWiseDataDto(long id,String programName, Date ctzDateTime,
+			long ssActiveAgents, long totalAgent, long totalAgentParticipating,
+			long extraHrReqApproved, long extraHrReqDeclined,
+			long extraHrReqAutoApproved, double extraHrHoursApproved,
+			double extraHrHoursDeclined, double extraHrHourAutoApproved,
+			double extraHrRulerCmdAgent, double extraHrRtcApproved,
+			double extraHrAgtAccepted, double extraHrAgtDecliend,
+			double extraHrAgtNores, long vtoReqApproved, long vtoReqDeclined,
+			long vtoReqAutoApproved, double vtoHoursApproved,
+			double vtoHoursDeclined, double vtoHourAutoApproved,
+			double vtoHourRulerCmdAgent, double vtoHourRtcApproved,
+			double vtoHourAgtAccepted, double vtoHourAgtDecliend,
+			double vtoHourAgtNores, long ttlSwap, double ttlSwapHr,
+			long tradeReq, long ttlTradeAccepted, double ttlTradeHr,
+			double scheduleHr, long currentDayActiveAgent,
+			long extraHrReqRtcWaiting, double extraHrHoursRtcWaiting,
+			long vtoReqRtcWaiting, double vtoHoursRtcWaiting){
 		
 		this.id=id;
-		this.programName = programname;
-		this.ctzDateTime = ctzdatetime;
-		this.ssActiveAgents = ssactiveagents;
-		this.totalAgent = totalagent;
-		this.totalAgentParticipating = totalagentparticipating;
-		this.extraHrReqApproved = extrahrreqapproved;
-		this.extraHrReqDeclined=extrahrreqdeclined;
-		this.extraHrReqAutoApproved = extrahrreqautoapproved;
-		this.extraHrHoursApproved = extrahrhoursapproved;
-		this.extraHrHoursDeclined = extrahrhoursdeclined;
-		this.extraHrHourAutoApproved = extrahrhourautoapproved;
-		this.extraHrRulerCmdAgent = extrahrrulercmdagent;
-		this.extraHrRtcApproved = extrahrrtcapproved;
-		this.extraHrAgtAccepted = extrahragtaccepted;
-		this.extraHrAgtDecliend = extrahragtdecliend;
-		this.extraHrAgtNores = extrahragtnores;
-		this.vtoReqApproved = vtoreqapproved;
-		this.vtoReqDeclined = vtoreqdeclined;
-		this.vtoReqAutoApproved = vtoreqautoapproved;
-		this.vtoHoursApproved = vtohoursapproved;
-		this.vtoHoursDeclined = vtohoursdeclined;
-		this.vtoHourAutoApproved = vtohourautoapproved;
-		this.vtoHourRulerCmdAgent = vtohourrulercmdagent;
-		this.vtoHourRtcApproved = vtohourrtcapproved;
-		this.vtoHourAgtAccepted = vtohouragtaccepted;
-		this.vtoHourAgtDecliend = vtohouragtdecliend;
-		this.ttlSwap = ttlswap;
-		this.ttlSwapHr = ttlswaphr;
-		this.tradeReq = tradereq;
-		this.ttlTradeAccepted = ttltrade_accepted;
-		this.ttlTradeHr = ttltradehr;
-		this.scheduleHr = schedulehr;
-		this.currentDayActiveAgent = currentdayactivegent;
-		this.extraHrReqRtcWaiting = extrahrreqrtcwaiting;
-		this.extraHrHoursRtcWaiting = extrahrhoursrtcwaiting;
-		this.vtoReqRtcWaiting = vtoreqrtcwaiting;
-		this.vtoHoursRtcWaiting = vtohoursrtcwaiting;
+		this.programName = programName;
+		this.ctzDateTime = ctzDateTime;
+		this.ssActiveAgents = ssActiveAgents;
+		this.totalAgent = totalAgent;
+		this.totalAgentParticipating = totalAgentParticipating;
+		this.extraHrReqApproved = extraHrReqApproved;
+		this.extraHrReqDeclined=extraHrReqDeclined;
+		this.extraHrReqAutoApproved = extraHrReqAutoApproved;
+		this.extraHrHoursApproved = extraHrHoursApproved;
+		this.extraHrHoursDeclined = extraHrHoursDeclined;
+		this.extraHrHourAutoApproved = extraHrHourAutoApproved;
+		this.extraHrRulerCmdAgent = extraHrRulerCmdAgent;
+		this.extraHrRtcApproved = extraHrRtcApproved;
+		this.extraHrAgtAccepted = extraHrAgtAccepted;
+		this.extraHrAgtDecliend = extraHrAgtDecliend;
+		this.extraHrAgtNores = extraHrAgtNores;
+		this.vtoReqApproved = vtoReqApproved;
+		this.vtoReqDeclined = vtoReqDeclined;
+		this.vtoReqAutoApproved = vtoReqAutoApproved;
+		this.vtoHoursApproved = vtoHoursApproved;
+		this.vtoHoursDeclined = vtoHoursDeclined;
+		this.vtoHourAutoApproved = vtoHourAutoApproved;
+		this.vtoHourRulerCmdAgent = vtoHourRulerCmdAgent;
+		this.vtoHourRtcApproved = vtoHourRtcApproved;
+		this.vtoHourAgtAccepted = vtoHourAgtAccepted;
+		this.vtoHourAgtDecliend = vtoHourAgtDecliend;
+		this.vtoHourAgtNores = vtoHourAgtNores;
+		this.ttlSwap = ttlSwap;
+		this.ttlSwapHr = ttlSwapHr;
+		this.tradeReq = tradeReq;
+		this.ttlTradeAccepted = ttlTradeAccepted;
+		this.ttlTradeHr = ttlTradeHr;
+		this.scheduleHr = scheduleHr;
+		this.currentDayActiveAgent = currentDayActiveAgent;
+		this.extraHrReqRtcWaiting = extraHrReqRtcWaiting;
+		this.extraHrHoursRtcWaiting = extraHrHoursRtcWaiting;
+		this.vtoReqRtcWaiting = vtoReqRtcWaiting;
+		this.vtoHoursRtcWaiting = vtoHoursRtcWaiting;
 	}
-
 	
 
 	public long getId() {
@@ -133,67 +132,67 @@ public class ProgramWiseDataDto extends BaseCustomerDto{
 
 
 
-	public int getSsactiveagents() {
+	public long getSsactiveagents() {
 		return ssActiveAgents;
 	}
 
-	public void setSsactiveagents(int ssactiveagents) {
+	public void setSsactiveagents(long ssactiveagents) {
 		this.ssActiveAgents = ssactiveagents;
 	}
 
-	public int getTotalagent() {
+	public long getTotalagent() {
 		return totalAgent;
 	}
 
-	public void setTotalagent(int totalagent) {
+	public void setTotalagent(long totalagent) {
 		this.totalAgent = totalagent;
 	}
 
-	public int getTotalagentparticipating() {
+	public long getTotalagentparticipating() {
 		return totalAgentParticipating;
 	}
 
-	public void setTotalagentparticipating(int totalagentparticipating) {
+	public void setTotalagentparticipating(long totalagentparticipating) {
 		this.totalAgentParticipating = totalagentparticipating;
 	}
 
-	public int getCurrentdayactivegent() {
+	public long getCurrentdayactivegent() {
 		return currentDayActiveAgent;
 	}
 
-	public void setCurrentdayactivegent(int currentdayactivegent) {
+	public void setCurrentdayactivegent(long currentdayactivegent) {
 		this.currentDayActiveAgent = currentdayactivegent;
 	}
 
-	public int getExtrahrreqdeclined() {
+	public long getExtrahrreqdeclined() {
 		return extraHrReqDeclined;
 	}
 
-	public void setExtrahrreqdeclined(int extrahrreqdeclined) {
+	public void setExtrahrreqdeclined(long extrahrreqdeclined) {
 		this.extraHrReqDeclined = extrahrreqdeclined;
 	}
 
-	public int getExtrahrreqapproved() {
+	public long getExtrahrreqapproved() {
 		return extraHrReqApproved;
 	}
 
-	public void setExtrahrreqapproved(int extrahrreqapproved) {
+	public void setExtrahrreqapproved(long extrahrreqapproved) {
 		this.extraHrReqApproved = extrahrreqapproved;
 	}
 
-	public int getExtrahrreqrtcwaiting() {
+	public long getExtrahrreqrtcwaiting() {
 		return extraHrReqRtcWaiting;
 	}
 
-	public void setExtrahrreqrtcwaiting(int extrahrreqrtcwaiting) {
+	public void setExtrahrreqrtcwaiting(long extrahrreqrtcwaiting) {
 		this.extraHrReqRtcWaiting = extrahrreqrtcwaiting;
 	}
 
-	public int getExtrahrreqautoapproved() {
+	public long getExtrahrreqautoapproved() {
 		return extraHrReqAutoApproved;
 	}
 
-	public void setExtrahrreqautoapproved(int extrahrreqautoapproved) {
+	public void setExtrahrreqautoapproved(long extrahrreqautoapproved) {
 		this.extraHrReqAutoApproved = extrahrreqautoapproved;
 	}
 
@@ -269,35 +268,35 @@ public class ProgramWiseDataDto extends BaseCustomerDto{
 		this.extraHrAgtNores = extrahragtnores;
 	}
 
-	public int getVtoreqapproved() {
+	public long getVtoreqapproved() {
 		return vtoReqApproved;
 	}
 
-	public void setVtoreqapproved(int vtoreqapproved) {
+	public void setVtoreqapproved(long vtoreqapproved) {
 		this.vtoReqApproved = vtoreqapproved;
 	}
 
-	public int getVtoreqdeclined() {
+	public long getVtoreqdeclined() {
 		return vtoReqDeclined;
 	}
 
-	public void setVtoreqdeclined(int vtoreqdeclined) {
+	public void setVtoreqdeclined(long vtoreqdeclined) {
 		this.vtoReqDeclined = vtoreqdeclined;
 	}
 
-	public int getVtoreqrtcwaiting() {
+	public long getVtoreqrtcwaiting() {
 		return vtoReqRtcWaiting;
 	}
 
-	public void setVtoreqrtcwaiting(int vtoreqrtcwaiting) {
+	public void setVtoreqrtcwaiting(long vtoreqrtcwaiting) {
 		this.vtoReqRtcWaiting = vtoreqrtcwaiting;
 	}
 
-	public int getVtoreqautoapproved() {
+	public long getVtoreqautoapproved() {
 		return vtoReqAutoApproved;
 	}
 
-	public void setVtoreqautoapproved(int vtoreqautoapproved) {
+	public void setVtoreqautoapproved(long vtoreqautoapproved) {
 		this.vtoReqAutoApproved = vtoreqautoapproved;
 	}
 
@@ -373,11 +372,11 @@ public class ProgramWiseDataDto extends BaseCustomerDto{
 		this.vtoHourAgtNores = vtohouragtnores;
 	}
 
-	public int getTtlswap() {
+	public long getTtlswap() {
 		return ttlSwap;
 	}
 
-	public void setTtlswap(int ttlswap) {
+	public void setTtlswap(long ttlswap) {
 		this.ttlSwap = ttlswap;
 	}
 
@@ -389,19 +388,19 @@ public class ProgramWiseDataDto extends BaseCustomerDto{
 		this.ttlSwapHr = ttlswaphr;
 	}
 
-	public int getTradereq() {
+	public long getTradereq() {
 		return tradeReq;
 	}
 
-	public void setTradereq(int tradereq) {
+	public void setTradereq(long tradereq) {
 		this.tradeReq = tradereq;
 	}
 
-	public int getTtltrade_accepted() {
+	public long getTtltrade_accepted() {
 		return ttlTradeAccepted;
 	}
 
-	public void setTtltrade_accepted(int ttltrade_accepted) {
+	public void setTtltrade_accepted(long ttltrade_accepted) {
 		this.ttlTradeAccepted = ttltrade_accepted;
 	}
 

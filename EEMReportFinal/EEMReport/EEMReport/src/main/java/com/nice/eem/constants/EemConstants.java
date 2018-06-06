@@ -28,5 +28,14 @@ public class EemConstants {
 	public static final String SUMMARY_REPORT_MAPPING = "SummaryReportDto";
 	
 	public static final String EMAIL_SENDER = "ajit2java@gmail.com";
+        
+	public static final String CUSTOMER_NAME_PREFIX = "workflexdatastatus_";
+	
+	public static final String CUSTOMER_NAME_SITE = "_site";
+	
+	public static final String PROGRAM_DATA_MAPPING = "ProgramWiseDataDto";
+	
+	public static final String SITE_DATA_MAPPING = "SiteWiseDataDto";
+	
 
 }

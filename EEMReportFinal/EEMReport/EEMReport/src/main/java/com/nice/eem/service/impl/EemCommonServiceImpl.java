@@ -24,14 +24,14 @@ public class EemCommonServiceImpl implements EemCommonService {
 	private EemCommonDao eemCommonDao;
 
 	@Override
-	public List<ProgramWiseDataDto> getProgramWiseDataDto(String customerName, Date ctzDate) {
+	public List<ProgramWiseDataDto> getProgramWiseData(String customerName, Date ctzDate) {
 
 		List<ProgramWiseDataDto> programWiseData = eemCommonDao.getProgramWiseData(customerName, ctzDate);
 		return programWiseData;
 	}
 
 	@Override
-	public List<SiteWiseDataDto> getSiteWiseDataDto(String customerName, Date ctzDate) {
+	public List<SiteWiseDataDto> getSiteWiseData(String customerName, Date ctzDate) {
 
 		List<SiteWiseDataDto> siteWiseData = eemCommonDao.getSiteWiseData(customerName, ctzDate);
 

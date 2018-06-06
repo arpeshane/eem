@@ -13,9 +13,9 @@ import com.nice.eem.dto.SummaryReportDto;
  */
 public interface ProgramWiseDataService {
 
-	public List<ProgramWiseDataDto> findAllProgramWiseData();
+	public List<ProgramWiseDataDto> findAllProgramWiseData(String tablename, Date date);
 
-	public List<SummaryReportDto> getSummaryReportForCustomerByDate(Date ctzDate);
+	//public List<SummaryReportDto> getSummaryReportForCustomerByDate(Date ctzDate, String tablename);
 
 	/*
 	

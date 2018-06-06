@@ -25,7 +25,6 @@ import com.nice.eem.dto.ProgramWiseDataDto;
 import com.nice.eem.dto.SiteWiseDataDto;
 import com.nice.eem.dto.SummaryReportDto;
 import com.nice.eem.entity.EemIndividualCustomer;
-import com.nice.eem.mail.batch.CustomerItemProcessor;
 import com.nice.eem.mail.batch.model.Customer;
 import com.nice.eem.service.EemCommonService;
 import com.nice.eem.service.IndividualCustService;
@@ -34,7 +33,6 @@ import com.nice.eem.service.SiteWiseDataService;
 import com.nice.eem.util.CommonUtil;
 import com.nice.eem.util.EemProperties;
 import com.nice.eem.util.FileReadUtil;
-import com.nice.eem.util.MailUtil;
 
 /**
  * Created by Ajit on 18-05-2018.
@@ -45,13 +43,7 @@ public class ConcentrixFinalReport {
 	Logger logger = LoggerFactory.getLogger(getClass());
 
 	@Autowired
-	private ProgramWiseDataService programWiseDataService;
-
-	@Autowired
 	private EemCommonService eemCommonService;
-
-	@Autowired
-	private SiteWiseDataService siteWiseDataService;
 
 	@Autowired
 	private FileReadUtil fileRead;
@@ -60,13 +52,10 @@ public class ConcentrixFinalReport {
 	private ExcelSheetCreation excelGeneration;
 
 	@Autowired
-	private EemProperties eemProperties;
-
-	@Autowired
-	private IndividualCustService eemIndividualCustService;
-
-	@Autowired
 	private JavaMailSender mailSender;
+
+	@Autowired
+	IndividualCustService customerService;
 
 	/**
 	 * @author ajit.p
@@ -80,59 +69,75 @@ public class ConcentrixFinalReport {
 		String excelFilePath = fileRead.getFile();
 		logger.info("Next File path: " + excelFilePath);
 		try {
+			String customerName = null;
 
-			List<String> customerNames = eemProperties.getCustomerNames();
-			Date ctzDate = CommonUtil.convertStringToDate("2018-05-10");
-			for (String customerName : customerNames) {
+			List<EemIndividualCustomer> activeCustomerList = customerService.getActiveCustomers();
 
-				FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
+			if (activeCustomerList != null) {
 
-				workbook = WorkbookFactory.create(inputStream);
+				for (EemIndividualCustomer customerlist : activeCustomerList) {
 
-				System.out.println(workbook.toString());
+					customerName = EemConstants.CUSTOMER_NAME_PREFIX.concat(customerlist.getCustName());
+					String siteCustomerName = EemConstants.CUSTOMER_NAME_PREFIX
+							.concat(customerlist.getCustName().concat(EemConstants.CUSTOMER_NAME_SITE));
 
-				List<ProgramWiseDataDto> programAgents = programWiseDataService.findAllProgramWiseData();
+					Date startDate = CommonUtil.convertStringToDate(CommonUtil.getDateByWeekDay(customerlist.getWeekStartDay()));
 
-				List<SiteWiseDataDto> siteAgents = siteWiseDataService.findAllSiteWiseData();
+					FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
 
-				List<SummaryReportDto> summaryReport = eemCommonService.getSummaryReportData(customerName, ctzDate);
+					workbook = WorkbookFactory.create(inputStream);
 
-				logger.info(summaryReport.toString());
+					System.out.println(workbook.toString());
 
-				/*
-				 * SummaryReportDto summaryReportDto =
-				 * programWiseDataService.getSummaryReport();
-				 * 
-				 * ExcelUtil.getSummaryReportDto(summaryReportDto);
-				 */
-				excelGeneration.createSiteWiseSheet(siteAgents, workbook, 2);
-				excelGeneration.createProgramWiseSheet(programAgents, workbook, 1);
-				// excelGeneration.createSummaryReport(summaryReportDto,
-				// workbook,
-				// 0);
-				excelGeneration.createSummaryReport(summaryReport, workbook, 0);
-				inputStream.close();
-				String attachment = customerName.concat(EemConstants.OUTPUT_FILE_NAME).concat(String.valueOf(ctzDate.getTime())).concat(EemConstants.XLSX_FORMAT);
+					List<ProgramWiseDataDto> programAgents = eemCommonService.getProgramWiseData(customerName,
+							startDate);
+					// List<ProgramWiseDataDto> programAgents =
+					// programWiseDataService.findAllProgramWiseData(customerName, startDate);
+					List<SiteWiseDataDto> siteAgents = eemCommonService.getSiteWiseData(siteCustomerName, startDate);
 
-				FileOutputStream outputStream = new FileOutputStream(attachment);
-				/* "./generated-reports/Telus Dashboard 23-05-18.xlsx" */
-				System.out.println(outputStream);
-				workbook.write(outputStream);
-				workbook.close();
-				outputStream.close();
-				EemIndividualCustomer eemCustomer = eemIndividualCustService.findByCustName(customerName);
-				// MimeMessage message = sendEmailsToCustomers(customer);
-				String[] customerEmailsTo = eemCustomer.getEmailReportTo().split(",");
-				String[] attachments = { attachment };
-				customer = new Customer(customerName, EemConstants.EMAIL_SENDER, customerEmailsTo, null, null, EemConstants.REPORT_MAIL_SUBJECT, EemConstants.REPORT_MAIL_BODY, attachments);
-				MimeMessage sendEmailsToCustomers = sendEmailsToCustomers(customer);
-				customer.setMessage(sendEmailsToCustomers);
+					List<SummaryReportDto> summaryReport = eemCommonService.getSummaryReportData(customerName,
+							startDate);
+
+					logger.info(summaryReport.toString());
+
+					/*
+					 * SummaryReportDto summaryReportDto =
+					 * programWiseDataService.getSummaryReport();
+					 * 
+					 * ExcelUtil.getSummaryReportDto(summaryReportDto);
+					 */
+					excelGeneration.createSiteWiseSheet(siteAgents, workbook, 2);
+					excelGeneration.createProgramWiseSheet(programAgents, workbook, 1);
+					// excelGeneration.createSummaryReport(summaryReportDto,
+					// workbook,
+					// 0);
+					excelGeneration.createSummaryReport(summaryReport, workbook, 0);
+					inputStream.close();
+					String attachment = customerlist.getCustName().concat(EemConstants.OUTPUT_FILE_NAME)
+							.concat(String.valueOf(startDate.getTime())).concat(EemConstants.XLSX_FORMAT);
+
+					FileOutputStream outputStream = new FileOutputStream(attachment);
+
+					/* "./generated-reports/Telus Dashboard 23-05-18.xlsx" */
+					System.out.println(outputStream);
+					workbook.write(outputStream);
+					workbook.close();
+					outputStream.close();
+					// EemIndividualCustomer eemCustomer =
+					// eemIndividualCustService.findByCustName(customerName);
+					// MimeMessage message = sendEmailsToCustomers(customer);
+					String[] customerEmailsTo = customerlist.getEmailReportTo().split(",");
+					String[] attachments = { attachment };
+					customer = new Customer(customerName, EemConstants.EMAIL_SENDER, customerEmailsTo, null, null,
+							EemConstants.REPORT_MAIL_SUBJECT, EemConstants.REPORT_MAIL_BODY, attachments);
+					MimeMessage sendEmailsToCustomers = sendEmailsToCustomers(customer);
+					customer.setMessage(sendEmailsToCustomers);
+
+				}
 			}
-
 		} catch (IOException | EncryptedDocumentException ex) {
 			logger.error(ex.getMessage());
 		}
-
 		return customer;
 	}
 

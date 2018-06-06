@@ -14,14 +14,14 @@ public interface EemCommonService {
 	 * 
 	 * @return
 	 */
-	public List<ProgramWiseDataDto> getProgramWiseDataDto(String customerName, Date ctzDate);
+	public List<ProgramWiseDataDto> getProgramWiseData(String customerName, Date ctzDate);
 
 	/**
 	 * This method will return the list of site wise data.
 	 * 
 	 * @return
 	 */
-	public List<SiteWiseDataDto> getSiteWiseDataDto(String customerName, Date ctzDate);
+	public List<SiteWiseDataDto> getSiteWiseData(String customerName, Date ctzDate);
 	
 	/**
 	 * This method will return the list of summary report data.

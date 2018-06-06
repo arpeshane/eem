@@ -25,7 +25,7 @@ public class ProgramWiseDataServiceImpl implements ProgramWiseDataService {
 	private ProgramWiseDataDao programWiseDataDao;
 
 	@Override
-	public List<ProgramWiseDataDto> findAllProgramWiseData() {
+	public List<ProgramWiseDataDto> findAllProgramWiseData(String tablename, Date date) {
 		List<ProgramWiseDataDto> programWiseDataDtos = new ArrayList<ProgramWiseDataDto>();
 		List<ConcentrixProgramEntity> workflexConcentrics = programWiseDataDao.findAll();
 		ObjectMapper mapper = new ObjectMapper();
@@ -37,12 +37,12 @@ public class ProgramWiseDataServiceImpl implements ProgramWiseDataService {
 		return programWiseDataDtos;
 	}
 	
-	@Override
-	public List<SummaryReportDto> getSummaryReportForCustomerByDate(Date ctzDate){
+	/*@Override
+	public List<SummaryReportDto> getSummaryReportForCustomerByDate(Date ctzDate, String tablename){
 	
 		return programWiseDataDao.getSummaryReportForCustomerByDate(ctzDate);
 		
-	}
+	}*/
 
 	@Override
 	public SummaryReportDto getSummaryReport() {

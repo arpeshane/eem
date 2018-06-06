@@ -3,6 +3,8 @@
  */
 package com.nice.eem.dto;
 
+import java.util.Date;
+
 /**
  * @author ajit.p
  *
@@ -11,6 +13,7 @@ public class SummaryReportDto{
 
 	private static final long serialVersionUID = 1L;
 	/* Summary */
+	private Date ctzDateTime;
 	private long totalAgent;
 	private long totalAgentParticipating;
 	private long currentDayActiveAgent;
@@ -67,7 +70,7 @@ public class SummaryReportDto{
 	public SummaryReportDto() {
 		super();
 	}
-	public SummaryReportDto(long totalAgent, long totalAgentParticipating, long currentDayActiveAgent, long ssActiveAgents,
+	public SummaryReportDto(Date ctzDateTime, long totalAgent, long totalAgentParticipating, long currentDayActiveAgent, long ssActiveAgents,
 			double scheduleHr, long extraHrReqAutoApproved, double extraHrHourAutoApproved, long extraHrReqApproved,
 			double extraHrHoursApproved, long extraHrReqDeclined, double extraHrHoursDeclined, long extraHrReqRtcWaiting,
 			double extraHrHoursRtcWaiting, long vtoReqAutoApproved, double vtoHourAutoApproved, long vtoReqApproved,
@@ -77,6 +80,7 @@ public class SummaryReportDto{
 			double extraHrAgtDecliend, double extraHrAgtNores, double vtoHourRulerCmdAgent, double vtoHourRtcApproved,
 			double vtoHourAgtAccepted, double vtoHourAgtDecliend, double vtoHourAgtNores) {
 		super();
+		this.ctzDateTime=ctzDateTime;
 		this.totalAgent = totalAgent;
 		this.totalAgentParticipating = totalAgentParticipating;
 		this.currentDayActiveAgent = currentDayActiveAgent;
@@ -113,6 +117,14 @@ public class SummaryReportDto{
 		this.vtoHourAgtAccepted = vtoHourAgtAccepted;
 		this.vtoHourAgtDecliend = vtoHourAgtDecliend;
 		this.vtoHourAgtNores = vtoHourAgtNores;
+	}
+	
+	
+	public Date getCtzDateTime() {
+		return ctzDateTime;
+	}
+	public void setCtzDateTime(Date ctzDateTime) {
+		this.ctzDateTime = ctzDateTime;
 	}
 	public long getTotalAgent() {
 		return totalAgent;

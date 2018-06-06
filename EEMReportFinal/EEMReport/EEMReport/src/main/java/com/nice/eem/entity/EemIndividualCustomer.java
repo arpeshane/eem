@@ -25,8 +25,7 @@ public class EemIndividualCustomer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long customerId;
 
-	//customer name must be unique.
-	@Column(name = "customer_name", nullable=false, unique=true)
+	@Column(name = "customer_name")
 	private String custName;
 
 	@Column(name = "cust_mail_id")

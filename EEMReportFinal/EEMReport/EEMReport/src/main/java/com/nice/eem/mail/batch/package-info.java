@@ -5,4 +5,4 @@
  * @author ajit.p
  *
  */
-package com.nice.eem.dao.impl;
+package com.nice.eem.mail.batch;
